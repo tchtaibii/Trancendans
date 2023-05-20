@@ -1,0 +1,33 @@
+import React from 'react'
+import "./LeftBar.scss"
+import LogoImg from "../../Login/logo.svg";
+import LogoutImg from "./Logout.svg";
+import HomeImg from "./Home.svg";
+import ProfImg from "./profile.svg";
+import SetfImg from "./Settings.svg";
+import ChatImg from "./chat.svg";
+import Stream from "./stream.svg";
+import LeaderBoard from "./leaderBoard.svg";
+
+function LeftBar() {
+  return (
+    <div className='left-bar-container'>
+      <div className="left-bar">
+        <img className='logoo' src={LogoImg} alt="logo" />
+        <ul>
+          <a className='active'    href='#'><img  src={HomeImg} alt="Home"/></a>
+          <a className='desactive' href='#'><img src={ProfImg} alt="Profile"/></a>
+          <a className='desactive' href='#'><img src={ChatImg} alt="Chat"/></a>
+          <a className='desactive' href='#'><img src={Stream} alt="Play"/></a> 
+          <a className='desactive' href='#'><img src={LeaderBoard} alt="Leader Board"/></a> 
+          <a className='desactive' href='#'><img src={SetfImg} alt="Settings"/></a>
+        </ul>
+        <button className='logout'>
+          <img src={LogoutImg} alt=""/>
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default LeftBar;

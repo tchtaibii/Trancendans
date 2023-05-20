@@ -1,0 +1,100 @@
+@import "../../../../global.scss";
+.ModePlay{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    flex-direction: row;
+    gap: toRem(20);
+    justify-content:flex-start;
+    align-items: center;
+    padding: toRem(14) 0;
+    padding-left: toRem(28);
+    .Mode1{
+        display: flex;
+        flex-direction: column;
+        gap: toRem(9);
+        h2{
+            font-family: 'SF';
+            font-style: normal;
+            font-weight: 600;
+            font-size: toRem(18);
+            color: #FFFFFF;
+            text-transform: uppercase;
+        }
+        p{
+            font-family: 'SF';
+            font-style: normal;
+            font-weight: 400;
+            font-size: toRem(11);
+            color: #FFFFFF;
+            margin-bottom: toRem(27);
+        }
+    }
+}
+.playnowbtn{
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-family: 'SF';
+    font-style: normal;
+    font-weight: 600;
+    font-size: toRem(18);
+    color: #FFFFFF;
+}
+.photoMode{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 98;
+    img{
+        z-index: 2;
+    }
+    &::after{
+        z-index: 1;
+    }
+}
+.classic{
+    // @include backblur(toRem(132), toRem(188), #D67859);
+    img{
+        // width: toRem(198);
+        position: relative;
+        transform: scale(1.5);
+    }   
+}
+.ai{
+    img{
+        // width: toRem(198);
+        position: relative;
+        transform: scale(1.9);
+    }
+    // @include backblur(toRem(197), toRem(169), #028BC7);
+
+}
+.friend{
+    img{
+        // width: toRem(198);
+        position: relative;
+        transform: scale(1.7);
+    }
+}
+
+#classicIMG #aiIMG #friendIMG{
+    transition: all 1s ease-in-out;
+    
+}
+
+
+body:has(#classicA:hover) #classicIMG {
+    // filter: saturate(0);
+    transform: scale(1.7);
+}
+body:has(#aiA:hover) #aiIMG {
+    // filter: saturate(0);
+    transform: scale(2.3);
+}
+body:has(#friendA:hover) #friendIMG {
+    // filter: saturate(0);
+    transform: scale(2.1);
+}
