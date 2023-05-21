@@ -1,13 +1,12 @@
-import React from 'react'
-import "./LeftBar.scss"
-import LogoImg from "../../Login/logo.svg";
-import LogoutImg from "./Logout.svg";
-import HomeImg from "./Home.svg";
-import ProfImg from "./profile.svg";
-import SetfImg from "./Settings.svg";
-import ChatImg from "./chat.svg";
-import Stream from "./stream.svg";
-import LeaderBoard from "./leaderBoard.svg";
+ import "./LeftBar.scss"
+import LogoImg from "../../../assets/img/logo.svg";
+import LogoutImg from "../../../assets/img/Logout.svg";
+import HomeImg from "../../../assets/img/Home.svg";
+import ProfImg from "../../../assets/img/profile.svg";
+import SetfImg from "../../../assets/img/Settings.svg";
+import ChatImg from "../../../assets/img/chat.svg";
+import Stream from "../../../assets/img/stream.svg";
+import LeaderBoard from "../../../assets/img//leaderBoard.svg";
 
 function LeftBar() {
   return (

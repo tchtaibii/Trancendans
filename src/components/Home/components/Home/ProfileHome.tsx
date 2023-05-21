@@ -1,8 +1,8 @@
 import React from 'react'
 import GradienBox from '../../../../tools/GradienBox'
 import "./ProfileHome.scss"
-import SBadge from "./small-badge.svg"
-import BBadge from "./big-badge.svg"
+import SBadge from "../../../../assets/img/small-badge.svg"
+import BBadge from "../../../../assets/img/big-badge.svg"
 import { useRecoilValue } from 'recoil';
 import {Mydata} from '../../../../StateManager/StateM'
 // import { useSelector } from 'react-redux'

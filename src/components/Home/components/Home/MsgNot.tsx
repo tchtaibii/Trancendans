@@ -1,8 +1,8 @@
 import React, {useState, useRef } from 'react'
-import test from './test.svg'
+import test from '../../../../assets/img/test.svg'
 import "./MsgNot.scss"
-import inviFriend from "./invitation-friend.svg"
-import BellImg from "./bell.svg"
+import inviFriend from "../../../../assets/img/invitation-friend.svg"
+import BellImg from "../../../../assets/img/bell.svg"
 import GradienBox from '../../../../tools/GradienBox'
 import { useOnClickOutside } from 'usehooks-ts'
 import { useRecoilState} from 'recoil'

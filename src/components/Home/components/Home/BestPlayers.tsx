@@ -1,8 +1,7 @@
-import React from 'react'
 import GradienBox from '../../../../tools/GradienBox'
 import "../Main.scss"
 import RankTable from './RankTable'
-import trophet from './trophet.svg'
+import trophet from '../../../../assets/img/trophet.svg'
 function BestPlayers() {
   return (
     <div className='box-box-cont'>

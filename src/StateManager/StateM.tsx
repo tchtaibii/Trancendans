@@ -1,5 +1,5 @@
 import { atom } from 'recoil';
-import Iaward from './award.svg'
+import Iaward from '../assets/img/award.svg'
 
 export type user = {
 	login: string;

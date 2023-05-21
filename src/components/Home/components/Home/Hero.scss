@@ -1,6 +1,6 @@
 @import "../../../../global.scss";
 
-body:has(a:hover) .backgroundA {
+body:has(.playhero:hover) .backgroundA {
     opacity: 0;
 }
 

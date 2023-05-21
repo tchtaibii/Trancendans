@@ -1,6 +1,5 @@
-import React from 'react'
 import GradienBox from '../../../../tools/GradienBox'
-import PlayImg from "./Play.svg"
+import PlayImg from "../../../../assets/img/Play.svg"
 import "./Hero.scss"
 import { useRecoilValue } from 'recoil';
 import { Mydata } from '../../../../StateManager/StateM'
@@ -13,7 +12,7 @@ function Hero() {
           <h1 style={{ textTransform: 'capitalize' }}>{'Hello ! ' + data.login + '.'}</h1>
           <p>Ready for a gaming surprise ? Click 'Play' to start a random game and see what awaits !</p>
         </div>
-        <a href='/#' >
+        <a className='playhero' href='/#' >
           <div className="backgroundA"></div>
           <div className="contA">
             <h4>Play</h4>

@@ -1,6 +1,6 @@
 import React from 'react'
 import "./Search.scss"
-import SearImg from "./search.svg"
+import SearImg from "../../../../assets/img/search.svg"
 import GradienBox from '../../../../tools/GradienBox'
 function Search() {
   return (

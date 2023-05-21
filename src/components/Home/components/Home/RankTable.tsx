@@ -2,11 +2,11 @@ import React from 'react'
 import PlayerRank from './PlayerRank'
 import "../Main.scss"
 import { otherData, user } from '../../../../StateManager/StateM'
-import Iaward from "../../../../StateManager/award.svg"
-import gold from "./Gold.svg"
-import Silver from "./silver.svg"
-import Bronze from "./bronze.svg"
-import intero from "./interogation.svg"
+import Iaward from "../../../../assets/img/award.svg"
+import gold from "../../../../assets/img/Gold.svg"
+import Silver from "../../../../assets/img/silver.svg"
+import Bronze from "../../../../assets/img/bronze.svg"
+import intero from "../../../../assets/img/interogation.svg"
 import { useRecoilValue } from 'recoil'
 function RankTable() {
 	const rankData = useRecoilValue(otherData);

@@ -1,9 +1,8 @@
-import React from 'react'
 import GradienBox from '../../../../tools/GradienBox'
 import "./GamesMode.scss"
-import classicI from './classicM.svg'
-import aiI from './aiM.svg'
-import friendI from './friendM.svg'
+import classicI from '../../../../assets/img/classicM.svg'
+import aiI from '../../../../assets/img/aiM.svg'
+import friendI from '../../../../assets/img/friendM.svg'
 function BOxGame(props:any){
 	return (
 		<GradienBox mywidth="335px" myheight="195px" myborder="40px">

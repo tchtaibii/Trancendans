@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Search from './Home/Search'
 import MsgNot from './Home/MsgNot'
 import GamesMode from './Home/GamesMode'
@@ -7,7 +7,7 @@ import Hero from './Home/Hero'
 import ProfileHome from './Home/ProfileHome'
 import "./Main.scss"
 import GradienBox from '../../../tools/GradienBox'
-import avatar from './Home/avatar-p.svg'
+import avatar from '../../../assets/img/avatar-p.svg'
 
 function ActivityContent(props: any) {
 	return (<div className="activity-x">
