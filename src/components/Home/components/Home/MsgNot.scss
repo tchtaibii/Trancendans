@@ -89,9 +89,9 @@
     padding-top: toRem(18);
     padding-bottom: toRem(18);
     align-items: center;
-    -moz-transition: all 0.2s ease-in;
-    -o-transition: all 0.2s ease-in;
-    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 100ms ease-in;
+    -o-transition: all 100ms ease-in;
+    -webkit-transition: all 100ms ease-in;
     background-color: #353133;
     border-bottom: toRem(1) solid rgba(0, 0, 0, 0.3);
     border-top: toRem(1) solid rgba(0, 0, 0, 0.3);
