@@ -1,7 +1,6 @@
 import Login from './components/Login/Login';
 import './App.scss';
 import Home from './components/Home/Home';
-import { RecoilRoot } from 'recoil';
 import { useDispatch , useSelector } from 'react-redux';
 import { getUsers } from './features/usersSlice'
 import { getNotification } from './features/notificationsSlice'
@@ -21,10 +20,7 @@ function App() {
     <div className="App">
       {!isLogin && <Login />}
       {
-        isLogin &&
-          <RecoilRoot>
-            <Home />
-          </RecoilRoot>
+        isLogin && <Home />
       }
     </div>
   );
