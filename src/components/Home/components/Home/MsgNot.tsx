@@ -1,13 +1,14 @@
-import React, {useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import test from '../../../../assets/img/test.svg'
 import "./MsgNot.scss"
 import inviFriend from "../../../../assets/img/invitation-friend.svg"
 import BellImg from "../../../../assets/img/bell.svg"
 import GradienBox from '../../../../tools/GradienBox'
 import { useOnClickOutside } from 'usehooks-ts'
-import { useRecoilState} from 'recoil'
-import { notifications } from '../../../../StateManager/StateM'
-
+import { useDispatch, useSelector } from 'react-redux';
+import { AppDispatch } from '../../../../store/store'
+import { getNotification } from '../../../../features/notificationsSlice'
+import axios from 'axios'
 function MsgNot() {
 	const [isVisible, setIsVisible] = useState(false);
 	const ref = useRef(null)
@@ -18,10 +19,10 @@ function MsgNot() {
 	return (
 		<div className='msgNot-cont' ref={ref}>
 			<GradienBox mywidth="49px" myheight="49px" myborder="10px">
-				<button className='btn-msgnot'><img style={{width: '1.5rem'}} src={inviFriend} alt='' /></button>
+				<button className='btn-msgnot'><img style={{ width: '1.5rem' }} src={inviFriend} alt='' /></button>
 			</GradienBox>
 			<GradienBox mywidth="49px" myheight="49px" myborder="10px">
-				<button onClick={() => setIsVisible(!isVisible)} className='btn-msgnot'><img style={{width: '1.5rem'}} alt='' src={BellImg} /></button>
+				<button onClick={() => setIsVisible(!isVisible)} className='btn-msgnot'><img style={{ width: '1.5rem' }} alt='' src={BellImg} /></button>
 			</GradienBox>
 			{
 				isVisible && <div style={{ position: 'absolute', top: '5.8125rem', width: 'fit-content' }}>
@@ -46,28 +47,52 @@ function Notification(props: any) {
 		</div>
 	);
 }
-function NotificationCont(props: any) {
-	const [notifi, setNotificationsState] = useRecoilState(notifications);
-	const markAllAsRead = () => {
-		const updatedNotifications = notifi.map((not: any) => ({
-			...not,
-			isRead: 1
-		}));
-		setNotificationsState(updatedNotifications);
-		console.log(updatedNotifications)
-	};
-	const handleNotificationClick = (index: number) => {
-		const updatedNotifications = notifi.map((not: any, i: number) => {
-			if (i === index) {
-				return {
-					...not,
-					isRead: 1
-				};
+function NotificationCont() {
+
+	const [isEffect, setIsEffect] = useState(false);
+	const DataNotifications: any = useSelector((state: any) => state.notification);
+	console.log('notification :', DataNotifications);
+	const notifi = DataNotifications.notifications;
+
+	const dispatch: AppDispatch = useDispatch()
+
+	const markAllAsRead = async () => {
+		const updatedNotifications = notifi
+			.filter((not: any) => not.isRead === 0)
+			.map((not: any) => ({
+				...not,
+				isRead: 1,
+			}));
+		try {
+			for (const notification of updatedNotifications) {
+				const response = await axios.patch(`http://localhost:3001/notifications/${notification.id}`, {
+					isRead: 1,
+				});
+				console.log(response.data);
 			}
-			return not;
-		});
-		setNotificationsState(updatedNotifications);
+			setIsEffect(!isEffect);
+			console.log('updated notifications:', updatedNotifications);
+		} catch (error) {
+			console.error(error);
+		}
 	};
+	const handleNotificationClick = async (objectId: number) => {
+		try {
+			const updatedData = {
+				isRead: 1,
+			};
+			const response = await axios.patch(`http://localhost:3001/notifications/${objectId}`, updatedData);
+			setIsEffect(!isEffect);
+			console.log(response.data);
+		} catch (error) {
+			console.error(error);
+		}
+
+
+	};
+	useEffect(() => {
+		dispatch(getNotification());
+	}, [isEffect]);
 	return (
 
 		<GradienBox absolute={1} mywidth="316px" myheight="408.98px" myborder="20px">
@@ -77,8 +102,8 @@ function NotificationCont(props: any) {
 					<span className='notifi-num'>{notifi.filter((not: any) => not.isRead === 0).length}</span>
 				</div>
 				<div className="main-noti">
-					{notifi.map((e, index) => {
-						return (<Notification onClick={() => handleNotificationClick(index)} id={'noti-' + index} isRead={e.isRead} img={test} text={e.text} />);
+					{notifi.map((e: any, index: number) => {
+						return (<Notification onClick={() => handleNotificationClick(index + 1)} key={'noti-' + index} isRead={e.isRead} img={test} text={e.text} />);
 					})}
 				</div>
 				<div className="fot-notification">

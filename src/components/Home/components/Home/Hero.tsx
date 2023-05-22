@@ -3,8 +3,10 @@ import PlayImg from "../../../../assets/img/Play.svg"
 import "./Hero.scss"
 import { useRecoilValue } from 'recoil';
 import { Mydata } from '../../../../StateManager/StateM'
+import { useSelector } from 'react-redux';
 function Hero() {
   const data = useRecoilValue(Mydata);
+  // const data = useSelector((state:any) => state.users.users).filter((e:any) => e.admin === true)[0];
   return (
     <GradienBox mywidth="1101px" myheight="173px" myborder="40px">
       <div className='hero-cont'>

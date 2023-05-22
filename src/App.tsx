@@ -2,30 +2,29 @@ import Login from './components/Login/Login';
 import './App.scss';
 import Home from './components/Home/Home';
 import { RecoilRoot } from 'recoil';
-// import { Provider } from 'react-redux'
-// import { configureStore } from '@reduxjs/toolkit';
-// import profileSlice from './StateManager/Profile'
+import { useDispatch , useSelector } from 'react-redux';
+import { getUsers } from './features/usersSlice'
+import { getNotification } from './features/notificationsSlice'
+import { useEffect } from 'react'
+import { AppDispatch } from './store/store'
 
-// const store = configureStore({
-//   reducer: {
-//     profile: profileSlice,
-//   }
-// })
-
-
-var isLogin:boolean = true;
+var isLogin: boolean = true;
 
 function App() {
+  const dispatch: AppDispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(getUsers());
+    dispatch(getNotification());
+  }, []);
   return (
     <div className="App">
-      {!isLogin &&  <Login />}
+      {!isLogin && <Login />}
       {
         isLogin &&
-        // <Provider store={store}>
-        <RecoilRoot>
-          <Home/>
-        </RecoilRoot>
-        // </Provider>
+          <RecoilRoot>
+            <Home />
+          </RecoilRoot>
       }
     </div>
   );
