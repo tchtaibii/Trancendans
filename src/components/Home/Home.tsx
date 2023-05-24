@@ -1,3 +1,4 @@
+
 import "./Home.scss"
 import LeftBar from './components/LeftBar'
 import Main from './components/Main'

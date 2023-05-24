@@ -25,10 +25,11 @@
 .top {
     display: flex;
     align-items: center;
-    width: 100%;
-    gap: toRem(686);
-    /*position: fixed;*/
+    width: toRem(1201);
+    gap: 42.875rem;
+    /* position: fixed; */
     z-index: 100;
+    height: toRem(49);
 
 }
 
@@ -72,6 +73,7 @@
 }
 
 .bp-cont {
+    padding-top: toRem(5);
     display: flex;
     justify-content: flex-start;
     gap: 1rem;
@@ -82,6 +84,7 @@
     .bp {
         display: flex;
         flex-direction: column;
+        padding-top: toRem(5px);
         /* align-items: center;*/
         gap: toRem(15);
         margin: toRem(19) 0 toRem(12) toRem(16);

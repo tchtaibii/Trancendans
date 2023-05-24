@@ -1,10 +1,10 @@
 import { useState } from 'react'
-import Search from './Home/Search'
-import MsgNot from './Home/MsgNot'
-import GamesMode from './Home/GamesMode'
-import BestPlayers from './Home/BestPlayers'
-import Hero from './Home/Hero'
-import ProfileHome from './Home/ProfileHome'
+import Search from './Main/Search'
+import MsgNot from './Main/MsgNot'
+import GamesMode from './Main/GamesMode'
+import BestPlayers from './Main/BestPlayers'
+import Hero from './Main/Hero'
+import ProfileHome from './Main/ProfileHome'
 import "./Main.scss"
 import GradienBox from '../../../tools/GradienBox'
 import avatar from '../../../assets/img/avatar-p.svg'
@@ -133,7 +133,6 @@ function Main() {
 				{
 					invit && <Invitation state={setInvit} />
 				}
-				
 			</div>
 		</div>
 	)

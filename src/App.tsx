@@ -6,6 +6,7 @@ import { getUsers } from './features/usersSlice'
 import { getNotification } from './features/notificationsSlice'
 import { useEffect } from 'react'
 import { AppDispatch } from './store/store'
+import Particle from './tools/ParticalComponent';
 
 var isLogin: boolean = true;
 
@@ -18,6 +19,7 @@ function App() {
   }, []);
   return (
     <div className="App">
+      <Particle/>
       {!isLogin && <Login />}
       {
         isLogin && <Home />

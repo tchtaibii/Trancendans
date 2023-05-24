@@ -3,7 +3,7 @@
 
 @font-face {
   font-family: 'SF';
-  src: url('./SF.ttf') format('truetype');
+  src: url('./assets/Fonts/SF.ttf') format('truetype');
 }
 
 html {
@@ -14,7 +14,7 @@ html {
   padding: 0;
   box-sizing: border-box;
   color: #FFFFFF;
-  font-family: 'Gotham';
+  font-family: 'SF';
   font-style: normal;
 }
 

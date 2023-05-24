@@ -2,10 +2,10 @@
   "users": [
     {
       "login": "hboukili",
-      "level": 2,
+      "level": 0,
       "lastGame": "won",
       "avatar": "https://cdn.intra.42.fr/users/6c3254ce8284773a5434fc4975c8f21f/hboukili.jpg",
-      "points": 3660,
+      "points": 0,
       "status": false,
       "admin": false
     },
@@ -35,6 +35,15 @@
       "points": 11660,
       "status": true,
       "admin": true
+    },
+    {
+      "login": "ydahni",
+      "level": 0,
+      "lastGame": "won",
+      "avatar": "https://cdn.intra.42.fr/users/d00282f766753d56196928b23a2f9b00/tchtaibi.jpg",
+      "points": 0,
+      "status": true,
+      "admin": false
     }
   ],
   "notifications": [

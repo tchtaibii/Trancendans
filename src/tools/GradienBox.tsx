@@ -1,4 +1,3 @@
-import React from 'react'
 import "./GradienBox.scss"
 function GradienBox(props:any) {
 
