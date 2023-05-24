@@ -38,12 +38,14 @@
         width: toRem(28);
     }
 }
-.searchC{
+
+.searchC {
     position: absolute;
     top: toRem(73);
     // width: 100%;
     // height: 100%;
 }
+
 .SearchContent {
     display: flex;
     // position: relative;
@@ -71,20 +73,51 @@
         width: 100%;
         height: toRem(49);
         // background: #363133;
-        padding-left: toRem(16);
+        // padding-left: toRem(16);
         justify-content: space-between;
         // border-top: 1px solid rgba(114, 114, 114, 0.18);
-        border-bottom: 1px solid rgba(114, 114, 114, 0.18);
+        border-bottom: toRem(1) solid rgba(114, 114, 114, 0.18);
         cursor: pointer;
+
+        .user-active-search{
+            &::before {
+                content: "";
+                position: relative;
+                top: toRem(-15);
+                left: toRem(42);
+                width: 0.4rem;
+                height: 0.4rem;
+                background-color: #00CE78;
+                z-index: 8888888888;
+                border: toRem(1) solid #00CE78;
+                border-radius: 50%;
+            }
+        }
+        .user-desactive-search{
+            &::before {
+                content: "";
+                position: relative;
+                top: toRem(-15);
+                left: toRem(42);
+                width: 0.4rem;
+                height: 0.4rem;
+                background-color: #EF5E59;
+                z-index: 8888888888;
+                border: toRem(1) solid #EF5E59;
+                border-radius: 50%;
+            }
+        }
+
         .f-part1 {
             display: flex;
             align-items: center;
             gap: toRem(6);
-
             img {
+                position: relative;
                 width: toRem(34);
                 height: toRem(34);
                 border-radius: toRem(9);
+
             }
 
             .textInfo {
@@ -113,14 +146,16 @@
                 }
             }
         }
-        .f-part2{
+
+        .f-part2 {
             display: flex;
             align-items: center;
             height: 70%;
             padding-left: toRem(6);
             // padding-right: toRem(4);
             border-left: 1px solid rgba(249, 198, 144, 0.2);
-            img{
+
+            img {
                 width: toRem(33);
                 height: toRem(36);
             }

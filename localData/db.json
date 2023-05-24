@@ -6,7 +6,7 @@
       "lastGame": "won",
       "avatar": "https://cdn.intra.42.fr/users/6c3254ce8284773a5434fc4975c8f21f/hboukili.jpg",
       "points": 0,
-      "status": false,
+      "status": true,
       "admin": false
     },
     {
@@ -15,7 +15,7 @@
       "lastGame": "lose",
       "avatar": "https://cdn.intra.42.fr/users/561324f840ae97d18056fdff7420095a/schoukou.jpg",
       "points": 10660,
-      "status": true,
+      "status": false,
       "admin": false
     },
     {
@@ -35,15 +35,6 @@
       "points": 11660,
       "status": true,
       "admin": true
-    },
-    {
-      "login": "ydahni",
-      "level": 0,
-      "lastGame": "won",
-      "avatar": "https://cdn.intra.42.fr/users/d00282f766753d56196928b23a2f9b00/tchtaibi.jpg",
-      "points": 0,
-      "status": true,
-      "admin": false
     }
   ],
   "notifications": [

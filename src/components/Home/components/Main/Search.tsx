@@ -11,7 +11,7 @@ function SearchContent(props: any) {
 		console.log('user ound', props.userFound);
 		const elements = props.userFound.map((e: any, i:number) =>
 			<a key={'userFound-' + i} href='#' className="found">
-				<div className="f-part1">
+				<div className={'f-part1 ' + (e.status === true ? "user-active-search" : "user-desactive-search")}>
 					<img src={e.avatar} alt="" />
 					<div className="textInfo">
 						<h4>{e.login}</h4>

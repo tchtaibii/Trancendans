@@ -25,7 +25,7 @@ function MsgNot() {
 				<button onClick={() => setIsVisible(!isVisible)} className='btn-msgnot'><img style={{ width: '1.5rem' }} alt='' src={BellImg} /></button>
 			</GradienBox>
 			{
-				isVisible && <div style={{ position: 'absolute', top: '5.8125rem', width: 'fit-content' }}>
+				isVisible && <div style={{ position: 'absolute', top: '4.7rem', width: 'fit-content' }}>
 					<NotificationCont />
 				</div>
 			}
