@@ -81,3 +81,6 @@ button{
 input{
   border: 0;
 }
+canvas{
+  z-index: 9000000000;
+}

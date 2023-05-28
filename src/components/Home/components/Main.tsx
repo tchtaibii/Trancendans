@@ -5,9 +5,13 @@ import GamesMode from './Main/GamesMode'
 import BestPlayers from './Main/BestPlayers'
 import Hero from './Main/Hero'
 import ProfileHome from './Main/ProfileHome'
+import { Route, Routes } from 'react-router-dom'
 import "./Main.scss"
 import GradienBox from '../../../tools/GradienBox'
 import avatar from '../../../assets/img/avatar-p.svg'
+import Chat from './Main/Chat/Chat'
+import io from 'socket.io-client'
+
 
 function ActivityContent(props: any) {
 	return (<div className="activity-x">
@@ -111,9 +115,27 @@ function Invitation(props: any) {
 		</div>
 	);
 }
+function HomeRoute() {
+	return (
+		<>
+			<Hero />
+			<GamesMode />
+			<BestPlayers />
+		</>
+	)
+}
+// function HomeRoute2() {
+// 	return (
+// 		<>
+
+// 		</>
+// 	)
+// }
+
+const socket = io.connect("http://localhost:3001")
 
 function Main() {
-	const [invit, setInvit] = useState(true)
+	const [invit, setInvit] = useState(false)
 	return (
 		<div className='main'>
 			<div className="side1">
@@ -122,9 +144,10 @@ function Main() {
 					<MsgNot />
 				</div>
 				<div className="main-core">
-					<Hero />
-					<GamesMode />
-					<BestPlayers />
+					<Routes>
+						<Route path="/" element={<HomeRoute />} />
+						<Route path="chat" element={<Chat />} />
+					</Routes>
 				</div>
 			</div>
 			<div className='side2'>

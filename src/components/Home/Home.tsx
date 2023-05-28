@@ -2,16 +2,19 @@
 import "./Home.scss"
 import LeftBar from './components/LeftBar'
 import Main from './components/Main'
-
+import { BrowserRouter as Router, Outlet } from 'react-router-dom'
 function Home() {
 
   return (
     <div className='Home'>
-      <div className="container-home">
-        {/* <Home.buble /> */}
-        <LeftBar />
-        <Main />
-      </div>
+      <Router>
+        <div className="container-home">
+          {/* <Home.buble /> */}
+          <LeftBar />
+          <Main />
+          <Outlet />
+        </div>
+      </Router>
     </div>
   );
 }

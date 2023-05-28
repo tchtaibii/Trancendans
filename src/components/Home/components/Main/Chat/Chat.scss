@@ -1,0 +1,272 @@
+@import "../../../../../global.scss";
+
+.chatContainer {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    padding-left: toRem(28);
+    padding-right: toRem(23);
+    padding-bottom: toRem(38);
+    padding-top: toRem(32);
+    gap: toRem(43.66);
+
+    .chatUsers {
+        display: flex;
+        flex-direction: column;
+        width: toRem(299);
+        padding-right: toRem(5);
+
+        .chatUsersmesage {
+            margin-top: toRem(153);
+            width: 100%;
+            height: 100%;
+            gap: toRem(14.6);
+            overflow-x: hidden;
+            overflow-y: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            .chatUser {
+
+                width: toRem(295.93);
+                height: toRem(110);
+                display: flex;
+                background: rgba(35, 34, 36, 0.7);
+                border-radius: 40px;
+                display: flex;
+                // justify-content: center;
+                align-items: center;
+                padding-left: toRem(36);
+                padding-top: toRem(25);
+                padding-bottom: toRem(25);
+                gap: toRem(20);
+
+                img {
+                    width: toRem(60.4);
+                    height: toRem(60.4);
+                }
+
+                .textUserChat {
+                    display: flex;
+                    // align-items: center;
+                    gap: toRem(8.76);
+                    flex-direction: column;
+                    justify-content: center;
+
+                    h1 {
+                        font-family: 'SF';
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: toRem(15);
+                        color: #FFFFFF;
+                    }
+
+                    p {
+                        font-family: 'SF';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: toRem(13);
+                        line-height: 1rem;
+                        color: #726A72;
+                        text-overflow: ellipsis;
+                        // overflow: hidden;
+                        width: toRem(140.18);
+                        height: toRem(32.12);
+                        white-space: wrap;
+                        margin-left: toRem(5);
+                    }
+                }
+            }
+        }
+
+
+    }
+
+    .chatContent {
+        display: flex;
+        // height: toRem(735);
+        flex-direction: column;
+        gap: toRem(27);
+
+        .header {
+            display: flex;
+            width: 100%;
+            gap: toRem(325);
+            // align-items: center;
+
+            .infoUser {
+                display: flex;
+                gap: toRem(37);
+                align-items: center;
+
+                img {
+                    width: toRem(86.15);
+                    height: toRem(90);
+                }
+
+                .nameAndStatus {
+                    display: flex;
+                    flex-direction: column;
+                    gap: toRem(8);
+
+                    h1 {
+                        font-family: 'SF';
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: toRem(29);
+                        color: #FFFFFF;
+                        display: flex;
+                        align-items: flex-end;
+
+                        span {
+                            width: toRem(10);
+                            height: toRem(10);
+                            background-color: #17AFA0;
+                            border-radius: 50%;
+                            position: relative;
+                            left: 1rem;
+                            bottom: toRem(5);
+                        }
+                    }
+
+                    p {
+                        font-family: 'SF';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: toRem(19);
+                        color: #979797;
+                    }
+                }
+
+            }
+
+            .more {
+                width: toRem(34);
+                height: toRem(34);
+                background: #4E4648;
+                border-radius: toRem(10);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+            }
+        }
+
+        .content {
+            display: flex;
+            width: toRem(705.49);
+            height: toRem(735);
+            background: rgba(35, 34, 36, 0.7);
+            border-top-left-radius: toRem(40);
+            border-top-right-radius: toRem(40);
+            // padding: toRem(33) toRem(30) 0 0;
+            flex-direction: column-reverse;
+
+            .messageSend {
+                display: flex;
+                width: toRem(704);
+                height: toRem(69);
+                // max-height: toRem(200);
+                background: rgba(29, 27, 30, 0.7);
+                padding-bottom: toRem(12);
+                padding-top: toRem(13);
+                padding-left: toRem(15);
+                padding-right: toRem(20);
+                align-items: center;
+
+                button {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    img {
+                        width: 2rem;
+                        height: 2rem;
+                    }
+                }
+
+                textarea {
+                    display: flex;
+                    align-items: center;
+                    width: 100%;
+                    height: toRem(44);
+                    // max-height: toRem(200);
+                    resize: none;
+                    font-family: 'SF';
+                    font-style: normal;
+                    font-weight: 300;
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                    background-color: transparent;
+                    color: #5C5C5C;
+                    padding-left: toRem(16);
+                    outline: none;
+                    padding-top: toRem(9);
+                    border: 0;
+                    border-right: toRem(1) solid #4E4648;
+                    ;
+                }
+
+                .send {
+                    margin-left: toRem(17);
+                }
+            }
+
+            .messages {
+                display: flex;
+                flex-direction: column-reverse;
+                width: 100%;
+                height: fit-content;
+                max-height: toRem(600);
+                overflow-x: hidden;
+                overflow-y: auto;
+                padding-top: toRem(33);
+                padding-left: toRem(27);
+                padding-right: toRem(27);
+                padding-bottom: toRem(27);
+                gap: toRem(49);
+
+                .messageShow {
+                    display: flex;
+                    flex-direction: row;
+                    gap: toRem(22);
+                    width: 100%;
+
+                    img {
+                        border-radius: 50%;
+                        width: toRem(51.71);
+                        height: toRem(51.71);
+                    }
+
+                    .theTextMsg {
+                        display: flex;
+                        align-items: center;
+                        width: fit-content;
+                        padding: toRem(12) toRem(24);
+                        background: linear-gradient(138.3deg, rgba(235, 207, 208, 0.2) 2.36%, rgba(249, 198, 144, 0.2) 164.32%);
+                        box-shadow: 0px toRem(4) toRem(10) rgba(0, 0, 0, 0.25);
+                        border-radius: 0px toRem(19) toRem(19) toRem(19);
+                        font-family: 'SF Compact Rounded';
+                        font-style: normal;
+                        font-weight: 400;
+                        font-size: toRem(14);
+                        line-height: toRem(17);
+                        color: #FFFFFF;
+                        max-width: toRem(400);
+                    }
+                }
+
+                .myMessage {
+                    flex-direction: row-reverse;
+
+                    .theTextMsg {
+                        background: linear-gradient(138.3deg, rgba(235, 207, 208, 0.2) 2.36%, rgba(0, 136, 122, 0.2) 164.32%);
+                        // box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+                        border-radius: toRem(19) 0 toRem(19) toRem(19);
+                    }
+                }
+            }
+        }
+    }
+}

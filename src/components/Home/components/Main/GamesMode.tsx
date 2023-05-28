@@ -3,6 +3,8 @@ import "./GamesMode.scss"
 import classicI from '../../../../assets/img/classicM.svg'
 import aiI from '../../../../assets/img/aiM.svg'
 import friendI from '../../../../assets/img/friendM.svg'
+import Spline from '@splinetool/react-spline';
+
 function BOxGame(props:any){
 	return (
 		<GradienBox mywidth="335px" myheight="195px" myborder="40px">

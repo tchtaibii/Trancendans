@@ -2,7 +2,7 @@ import "./Search.scss"
 import SearImg from "../../../../assets/img/search.svg"
 import GradienBox from '../../../../tools/GradienBox'
 import Awardtest from './testBadge.svg'
-import { useState, useRef, useEffect } from 'react'
+import { useState, useRef } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
 import { useSelector } from "react-redux"
 
