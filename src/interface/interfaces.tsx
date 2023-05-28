@@ -12,4 +12,18 @@ export type NotificationType = {
 	avatar: String,
 	text: String,
 	isRead: boolean
-  }
+}
+export type MessageType = {
+	from: String,
+	to: String,
+	message: String,
+	date: Number,
+	isLast: boolean
+};
+export type adminType = {
+	login: string;
+	level: number;
+	lastGame: string | null;
+	avatar: string;
+	points: number,
+};

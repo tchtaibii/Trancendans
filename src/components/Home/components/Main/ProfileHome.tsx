@@ -3,13 +3,9 @@ import "./ProfileHome.scss"
 import SBadge from "../../../../assets/img/small-badge.svg"
 import BBadge from "../../../../assets/img/big-badge.svg"
 import { useSelector } from 'react-redux'
-import {userType} from '../../../../interface/interfaces'
 
 function ProfileHome() {
-    const users: any = useSelector((state: any) => state.users);
-    const user = users.users.filter((item: any) => item.admin === true);
-    const data: userType | undefined = user.length > 0 ? user[0] : undefined;
-    console.log("data: ", user);
+    const data: any = useSelector((state: any) => state.admin);
     return (
         <GradienBox mywidth="397px" myheight="284px" myborder="40px">
             {data &&

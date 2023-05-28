@@ -68,12 +68,12 @@ function NotificationCont() {
 				const response = await axios.patch(`http://localhost:3001/notifications/${notification.id}`, {
 					isRead: 1,
 				});
-				console.log(response.data);
+				// console.log(response.data);
 			}
 			setIsEffect(!isEffect);
-			console.log('updated notifications:', updatedNotifications);
+			// console.log('updated notifications:', updatedNotifications);
 		} catch (error) {
-			console.error(error);
+			// console.error(error);
 		}
 	};
 	const handleNotificationClick = async (objectId: number) => {
@@ -83,9 +83,9 @@ function NotificationCont() {
 			};
 			const response = await axios.patch(`http://localhost:3001/notifications/${objectId}`, updatedData);
 			setIsEffect(!isEffect);
-			console.log(response.data);
+			// console.log(response.data);
 		} catch (error) {
-			console.error(error);
+			// console.error(error);
 		}
 
 

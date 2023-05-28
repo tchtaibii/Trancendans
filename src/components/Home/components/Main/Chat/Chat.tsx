@@ -3,81 +3,154 @@ import send from './send.svg'
 import GradienBox from '../../../../../tools/GradienBox'
 import './Chat.scss'
 import test from './test.svg'
+// import { io, Socket } from 'socket.io-client';
+import { useSelector } from 'react-redux'
+import { userType, adminType, MessageType } from '../../../../../interface/interfaces'
+import { useParams } from 'react-router-dom';
+import { useState, useRef } from 'react'
+import { useOnClickOutside } from 'usehooks-ts'
+// import { useParams } from 'react-router-dom';
+// const socket: Socket = io('http://localhost:3001');
+// 
 
-function Chat() {
-    var element: any[] = [];
-    for (let i = 0; i < 5; i++) {
-        element.push(
-            <div className="chatUser">
-                <img src={test} alt="" />
-                <div className="textUserChat">
-                    <h1>Nicolas Potter</h1>
-                    <p>Sounds good. Looking forward to it ...</p>
-                </div>
-            </div>
-        )
-    }
-    const ThreeDots = () => {
-        return (<svg width="0.313rem" height="1.125rem" viewBox="0 0 5 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M2.58333 4.83329C3.72917 4.83329 4.66667 3.89579 4.66667 2.74996C4.66667 1.60413 3.72917 0.666626 2.58333 0.666626C1.4375 0.666626 0.5 1.60413 0.5 2.74996C0.5 3.89579 1.4375 4.83329 2.58333 4.83329Z" fill="white" />
-            <path d="M2.58333 6.91663C1.4375 6.91663 0.5 7.85413 0.5 8.99996C0.5 10.1458 1.4375 11.0833 2.58333 11.0833C3.72917 11.0833 4.66667 10.1458 4.66667 8.99996C4.66667 7.85413 3.72917 6.91663 2.58333 6.91663Z" fill="white" />
-            <path d="M0.5 15.25C0.5 14.1041 1.4375 13.1666 2.58333 13.1666C3.72917 13.1666 4.66667 14.1041 4.66667 15.25C4.66667 16.3958 3.72917 17.3333 2.58333 17.3333C1.4375 17.3333 0.5 16.3958 0.5 15.25Z" fill="white" />
-        </svg>
-        )
-    }
-    const Emojis = () => {
-        return (
-            <svg width="2rem" height="2rem" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M20.6665 14.6666C21.7711 14.6666 22.6665 13.7712 22.6665 12.6666C22.6665 11.5621 21.7711 10.6666 20.6665 10.6666C19.5619 10.6666 18.6665 11.5621 18.6665 12.6666C18.6665 13.7712 19.5619 14.6666 20.6665 14.6666Z" fill="#5C5C5C" />
-                <path d="M11.3335 14.6666C12.4381 14.6666 13.3335 13.7712 13.3335 12.6666C13.3335 11.5621 12.4381 10.6666 11.3335 10.6666C10.2289 10.6666 9.3335 11.5621 9.3335 12.6666C9.3335 13.7712 10.2289 14.6666 11.3335 14.6666Z" fill="#5C5C5C" />
-                <path d="M16.0002 24C19.0402 24 21.6268 21.7866 22.6668 18.6666H9.3335C10.3735 21.7866 12.9602 24 16.0002 24Z" fill="#5C5C5C" />
-                <path d="M15.9865 2.66663C8.6265 2.66663 2.6665 8.63996 2.6665 16C2.6665 23.36 8.6265 29.3333 15.9865 29.3333C23.3598 29.3333 29.3332 23.36 29.3332 16C29.3332 8.63996 23.3598 2.66663 15.9865 2.66663ZM15.9998 26.6666C10.1065 26.6666 5.33317 21.8933 5.33317 16C5.33317 10.1066 10.1065 5.33329 15.9998 5.33329C21.8932 5.33329 26.6665 10.1066 26.6665 16C26.6665 21.8933 21.8932 26.6666 15.9998 26.6666Z" fill="#5C5C5C" />
-            </svg>
-        )
-    }
-    return (
-        <GradienBox mywidth="1097px" myheight="850px" myborder="40px">
-            <div className="chatContainer">
-                <div className="chatUsers">
-                    <div className="chatUsersmesage">
-                        {element.map(e => {
-                            return e
-                        })}
-                    </div>
+function StartChat() {
+	return (
+		<div className="chatContent">
+			<div className="startChat">
+				hello
+			</div>
+		</div>
+	)
+}
+const ThreeDots = () => {
+	return (<svg width="0.313rem" height="1.125rem" viewBox="0 0 5 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M2.58333 4.83329C3.72917 4.83329 4.66667 3.89579 4.66667 2.74996C4.66667 1.60413 3.72917 0.666626 2.58333 0.666626C1.4375 0.666626 0.5 1.60413 0.5 2.74996C0.5 3.89579 1.4375 4.83329 2.58333 4.83329Z" fill="white" />
+		<path d="M2.58333 6.91663C1.4375 6.91663 0.5 7.85413 0.5 8.99996C0.5 10.1458 1.4375 11.0833 2.58333 11.0833C3.72917 11.0833 4.66667 10.1458 4.66667 8.99996C4.66667 7.85413 3.72917 6.91663 2.58333 6.91663Z" fill="white" />
+		<path d="M0.5 15.25C0.5 14.1041 1.4375 13.1666 2.58333 13.1666C3.72917 13.1666 4.66667 14.1041 4.66667 15.25C4.66667 16.3958 3.72917 17.3333 2.58333 17.3333C1.4375 17.3333 0.5 16.3958 0.5 15.25Z" fill="white" />
+	</svg>
+	)
+}
 
-                </div>
-                <div className="chatContent">
-                    <div className="header">
-                        <div className="infoUser">
-                            <img src={test} alt="" />
-                            <div className="nameAndStatus">
-                                <h1>Nicolas Potter<span /></h1>
-                                <p>Active now</p>
-                            </div>
-                        </div>
-                        <button className="more"><ThreeDots /></button>
-                    </div>
-                    <div className="content">
-                        <div className="messageSend">
-                            <button><img src={emoji} alt="" /></button>
-                            {/* <input type="text" /> */}
-                            <textarea placeholder='Type a message ...' name="" id=""></textarea>
-                            <button className='send'><img src={send} alt="" /></button>
-                        </div>
-                        <div className="messages">
-                            <div className="messageShow">
-                                <img src={test} alt="" />
-                                <p className='theTextMsg'>Hi there! I noticed that you also play Ping Pong on this website. Would you like to play a game sometime?</p>
-                            </div>
-                            <div className="myMessage messageShow">
-                                <img src={test} alt="" />
-                                <p className='theTextMsg'>Hi there! I noticed that you also play Ping Pong on this website. Would you like to play a game sometime?</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </GradienBox>
-    )
+const SearchChat = () => {
+	return (<svg width="0.875rem" height="0.875rem" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+		<path d="M12.4697 13.5303C12.7626 13.8232 13.2374 13.8232 13.5303 13.5303C13.8232 13.2374 13.8232 12.7626 13.5303 12.4697L12.4697 13.5303ZM6.68421 11.6184C3.95912 11.6184 1.75 9.4093 1.75 6.68421H0.25C0.25 10.2377 3.13069 13.1184 6.68421 13.1184V11.6184ZM1.75 6.68421C1.75 3.95912 3.95912 1.75 6.68421 1.75V0.25C3.13069 0.25 0.25 3.13069 0.25 6.68421H1.75ZM6.68421 1.75C9.4093 1.75 11.6184 3.95912 11.6184 6.68421H13.1184C13.1184 3.13069 10.2377 0.25 6.68421 0.25V1.75ZM11.6184 6.68421C11.6184 8.04696 11.067 9.27949 10.1732 10.1732L11.2339 11.2339C12.3974 10.0703 13.1184 8.46076 13.1184 6.68421H11.6184ZM10.1732 10.1732C9.27949 11.067 8.04696 11.6184 6.68421 11.6184V13.1184C8.46076 13.1184 10.0703 12.3974 11.2339 11.2339L10.1732 10.1732ZM10.1732 11.2339L12.4697 13.5303L13.5303 12.4697L11.2339 10.1732L10.1732 11.2339Z" fill="white" />
+	</svg>
+
+	)
+}
+
+
+function ChatContent(params: any) {
+	const [threDots, setThreDots] = useState(false)
+	const ref = useRef(null)
+	const handleClickOutside = () => { setThreDots(false) }
+	useOnClickOutside(ref, handleClickOutside)
+
+	const converastionWith = (): userType | undefined => {
+		return params.users.length > 0 ? params.users.filter((e: userType) => e.login === params.pageOf)[0] : undefined;
+	};
+	const messageBetweenUs = params.messages.filter((e: any) => params.pageOf === e.from || params.pageOf === e.to);
+	console.log('messageBetweenUs: ', messageBetweenUs);
+	return (
+		<div className="chatContent">
+			<div className="header">
+				<div className="infoUser">
+					<img src={converastionWith() !== undefined ? converastionWith()?.avatar : ''} alt="" />
+					<div className="nameAndStatus">
+						<h1>{converastionWith() !== undefined ? converastionWith()?.login : 'Guest'}<span className={(converastionWith() !== undefined ? converastionWith()?.status === true ? 'activeUser' : '' : '')}></span></h1>
+						<p>{converastionWith() !== undefined && converastionWith()?.status === true ? 'Active Now' : 'Disconnected'}</p>
+					</div>
+				</div>
+				<div ref={ref} >
+					{
+						threDots && <div className="threedots">
+							<button>Invite to play</button>
+							<button className='Block'>Block</button>
+						</div>
+					}
+					<button onClick={() => {
+						setThreDots(!threDots);
+					}} className="more"><ThreeDots /></button>
+				</div>
+
+			</div>
+			<div className="content">
+				<div className="messageSend">
+					<button><img src={emoji} alt="" /></button>
+					<textarea placeholder='Type a message ...' name="" id=""></textarea>
+					<button className='send'><img src={send} alt="" /></button>
+				</div>
+				<div className="messages">
+					{messageBetweenUs.map((e: any, index: number) => {
+						return (
+							<div key={params.pageOf + ' ' + index} className={e.from === params.pageOf ? 'messageShow' : "myMessage messageShow"}>
+								<img src={e.from === params.pageOf ? converastionWith()?.avatar : params.admin.avatar} alt="" />
+								<p className='theTextMsg'>{e.message}</p>
+							</div>
+						);
+					})}
+				</div>
+			</div>
+		</div>
+	)
+}
+function Chat(props: any) {
+	const users: userType[] = useSelector((state: any) => state.users).users;
+	const admin: adminType = useSelector((state: any) => state.admin);
+	function truncateString(str: string): string {
+		if (str.length > 30) {
+			return str.slice(0, 30 - 3) + '...';
+		}
+		return str;
+	}
+	const { login } = useParams();
+	const messages = useSelector((state: any) => state.messages);
+	var sortedMessages: any[] = Object.values(messages).sort((a: any, b: any) => a.date - b.date);
+	const leftChat = sortedMessages[0].filter((e: any) => e.isLast === true)
+	console.log('leftChat : ', leftChat);
+	const searchByAttribute = (array: userType[], attribute: string): userType | undefined => {
+		return array.find(obj => obj.login === attribute);
+	}
+	const reversedMessages: any[] = [...sortedMessages[0]].reverse();
+	return (
+		<GradienBox mywidth="1097px" myheight="850px" myborder="40px">
+			<div className="chatContainer">
+				<div className="chatUsers">
+					<div className="chatUsersmesage">
+						<div className="headerLeftChat">
+							<div className="newClear">
+								<button className='new'>New Group</button>
+								<button className='clear'>Clear Chat</button>
+							</div>
+							<div className="chatSearch">
+								<input type="text" placeholder='Search for a Message...' />
+								<button><SearchChat /></button>
+							</div>
+						</div>
+						<div className="lastMessage">
+							{
+								leftChat.map((e: any, index: number) => {
+									const ownerLogin = e.from === admin.login ? e.to : e.from;
+									const owner = searchByAttribute(users, ownerLogin);
+									return (
+										<div key={index + '-last'} className="chatUser">
+											<img src={owner?.avatar} alt="" />
+											<div className="textUserChat">
+												<h1>{owner?.login}</h1>
+												<p>{truncateString(e.message)}</p>
+											</div>
+										</div>
+									);
+								})
+							}
+						</div>
+					</div>
+				</div>
+				{
+					props.params == false ? <StartChat /> : <ChatContent messages={reversedMessages} users={users} admin={admin} pageOf={login} />
+				}
+			</div>
+		</GradienBox>
+	)
 }
 export default Chat;
