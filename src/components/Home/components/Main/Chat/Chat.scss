@@ -152,7 +152,8 @@
                             width: toRem(140.18);
                             height: toRem(32.12);
                             margin-left: toRem(5);
-                            overflow: hidden;
+                            // overflow: hidden;
+                            overflow-wrap: break-word;
                         }
 
                     }

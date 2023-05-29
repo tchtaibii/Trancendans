@@ -115,22 +115,6 @@ function Invitation(props: any) {
 		</div>
 	);
 }
-function HomeRoute() {
-	return (
-		<div className="main-core">
-			<Hero />
-			<GamesMode />
-			<BestPlayers />
-		</div>
-	)
-}
-// function HomeRoute2() {
-// 	return (
-// 		<>
-
-// 		</>
-// 	)
-// }
 
 function Side2() {
 	return (
@@ -150,18 +134,18 @@ function Main() {
 					<MsgNot />
 				</div>
 				<Routes>
-					<Route path="/" element={<HomeRoute />} />
+					<Route path="/" element={<><Hero /><GamesMode /><BestPlayers /></>} />
 					<Route path="chat" element={<Chat params={false} />} />
 					<Route path="chat/:login" element={<Chat params={true} />} />
 					<Route path="profile/" element={<><Profile /></>} />
 				</Routes>
 			</div>
-				<Routes>
-					<Route path="/" element={<Side2 />} />
-					<Route path="chat" element={<Side2 />} />
-					<Route path="chat/:login" element={<Side2 />} />
-				</Routes>
-				{invit && <Invitation state={setInvit} />}
+			<Routes>
+				<Route path="/" element={<Side2 />} />
+				<Route path="chat" element={<Side2 />} />
+				<Route path="chat/:login" element={<Side2 />} />
+			</Routes>
+			{invit && <Invitation state={setInvit} />}
 		</div>
 	)
 }
