@@ -2,14 +2,15 @@ import emoji from './emojis.svg'
 import send from './send.svg'
 import GradienBox from '../../../../../tools/GradienBox'
 import './Chat.scss'
-import test from './test.svg'
 // import { io, Socket } from 'socket.io-client';
 import { useSelector } from 'react-redux'
 import { userType, adminType, MessageType } from '../../../../../interface/interfaces'
-import { useParams } from 'react-router-dom';
-import { useState, useRef } from 'react'
+import { Link, useParams } from 'react-router-dom';
+import { useState, useRef, useEffect } from 'react'
 import { useOnClickOutside } from 'usehooks-ts'
-// import { useParams } from 'react-router-dom';
+import axios from 'axios'
+
+
 // const socket: Socket = io('http://localhost:3001');
 // 
 
@@ -41,6 +42,7 @@ const SearchChat = () => {
 
 
 function ChatContent(params: any) {
+
 	const [threDots, setThreDots] = useState(false)
 	const ref = useRef(null)
 	const handleClickOutside = () => { setThreDots(false) }
@@ -49,8 +51,30 @@ function ChatContent(params: any) {
 	const converastionWith = (): userType | undefined => {
 		return params.users.length > 0 ? params.users.filter((e: userType) => e.login === params.pageOf)[0] : undefined;
 	};
-	const messageBetweenUs = params.messages.filter((e: any) => params.pageOf === e.from || params.pageOf === e.to);
-	console.log('messageBetweenUs: ', messageBetweenUs);
+	const [AllMsg, setAllMsg] = useState<MessageType[]>(params.messages);
+	const [oneTime, setOnetime] = useState(true);
+	if (params.messages.length > 0 && oneTime === true) {
+		setOnetime(false);
+		setAllMsg(params.messages);
+	}
+	const [messageTyping, setMessageTyping] = useState<string>('');
+	const handleKeyPress = (event: any) => {
+		if (event.key === 'Enter' && !event.shiftKey) {
+			event.preventDefault();
+			if (messageTyping.length > 0) {
+				setAllMsg([{
+					id: params.messages.length + 1,
+					from: params.admin.login,
+					to: params.pageOf,
+					message: messageTyping,
+					date: Date.now(),
+					isLast: false
+				}, ...AllMsg])
+			}
+			setMessageTyping('');
+		}
+	}
+	console.log(messageTyping);
 	return (
 		<div className="chatContent">
 			<div className="header">
@@ -77,17 +101,33 @@ function ChatContent(params: any) {
 			<div className="content">
 				<div className="messageSend">
 					<button><img src={emoji} alt="" /></button>
-					<textarea placeholder='Type a message ...' name="" id=""></textarea>
-					<button className='send'><img src={send} alt="" /></button>
+					<textarea onKeyDown={handleKeyPress} value={messageTyping} onChange={(e: any) => {
+						setMessageTyping(e.target.value);
+					}} placeholder='Type a message ...' name="" id=""></textarea>
+					<button onClick={() => {
+						if (messageTyping.length > 0) {
+							setAllMsg([{
+								id: params.messages.length + 1,
+								from: params.admin.login,
+								to: params.pageOf,
+								message: messageTyping,
+								date: Date.now(),
+								isLast: false
+							}, ...AllMsg])
+							setMessageTyping('');
+						}
+
+					}} className='send'><img src={send} alt="" /></button>
 				</div>
 				<div className="messages">
-					{messageBetweenUs.map((e: any, index: number) => {
+					{AllMsg.filter((e: any) => params.pageOf === e.from || params.pageOf === e.to).map((e: MessageType) => {
 						return (
-							<div key={params.pageOf + ' ' + index} className={e.from === params.pageOf ? 'messageShow' : "myMessage messageShow"}>
+							<div key={e.date + ''} className={e.from === params.pageOf ? 'messageShow' : "myMessage messageShow"}>
 								<img src={e.from === params.pageOf ? converastionWith()?.avatar : params.admin.avatar} alt="" />
 								<p className='theTextMsg'>{e.message}</p>
 							</div>
 						);
+
 					})}
 				</div>
 			</div>
@@ -106,51 +146,63 @@ function Chat(props: any) {
 	const { login } = useParams();
 	const messages = useSelector((state: any) => state.messages);
 	var sortedMessages: any[] = Object.values(messages).sort((a: any, b: any) => a.date - b.date);
-	const leftChat = sortedMessages[0].filter((e: any) => e.isLast === true)
-	console.log('leftChat : ', leftChat);
+	// const [leftChat, setleftChat]: any[] = useState(sortedMessages[0].filter((e: any) => e.isLast === true));
+	const leftChat: any[] = sortedMessages[0].filter((e: any) => e.isLast === true);
 	const searchByAttribute = (array: userType[], attribute: string): userType | undefined => {
 		return array.find(obj => obj.login === attribute);
 	}
+	// const [reversedMessages, setreversedMessages]: any[] = useState([...sortedMessages[0]].reverse());
 	const reversedMessages: any[] = [...sortedMessages[0]].reverse();
+	const messageIds: number[] = reversedMessages.map((msg: any) => msg.id);
+
 	return (
-		<GradienBox mywidth="1097px" myheight="850px" myborder="40px">
-			<div className="chatContainer">
-				<div className="chatUsers">
-					<div className="chatUsersmesage">
-						<div className="headerLeftChat">
-							<div className="newClear">
-								<button className='new'>New Group</button>
-								<button className='clear'>Clear Chat</button>
+		<div className="main-core">
+			<GradienBox mywidth="1097px" myheight="850px" myborder="40px">
+				<div className="chatContainer">
+					<div className="chatUsers">
+						<div className="chatUsersmesage">
+							<div className="headerLeftChat">
+								<div className="newClear">
+									<button className='new'>New Group</button>
+									<button onClick={async () => {
+
+										for (const idMsg of messageIds) {
+											await axios.delete(`http://localhost:3001/messages/${idMsg}`);
+											// setreversedMessages([]);
+											// setleftChat([]);
+										}
+									}} className='clear'>Clear Chat</button>
+								</div>
+								<div className="chatSearch">
+									<input type="text" placeholder='Search for a Message...' />
+									<button><SearchChat /></button>
+								</div>
 							</div>
-							<div className="chatSearch">
-								<input type="text" placeholder='Search for a Message...' />
-								<button><SearchChat /></button>
+							<div className="lastMessage">
+								{
+									leftChat.map((e: any, index: number) => {
+										const ownerLogin = e.from === admin.login ? e.to : e.from;
+										const owner = searchByAttribute(users, ownerLogin);
+										return (
+											<Link to={'/chat/' + owner?.login} key={index + '-last'} className="chatUser">
+												<img src={owner?.avatar} alt="" />
+												<div className="textUserChat">
+													<h1>{owner?.login}</h1>
+													<p>{truncateString(e.message)}</p>
+												</div>
+											</Link>
+										);
+									})
+								}
 							</div>
-						</div>
-						<div className="lastMessage">
-							{
-								leftChat.map((e: any, index: number) => {
-									const ownerLogin = e.from === admin.login ? e.to : e.from;
-									const owner = searchByAttribute(users, ownerLogin);
-									return (
-										<div key={index + '-last'} className="chatUser">
-											<img src={owner?.avatar} alt="" />
-											<div className="textUserChat">
-												<h1>{owner?.login}</h1>
-												<p>{truncateString(e.message)}</p>
-											</div>
-										</div>
-									);
-								})
-							}
 						</div>
 					</div>
+					{
+						props.params == false ? <StartChat /> : <ChatContent messages={reversedMessages} users={users} admin={admin} pageOf={login} />
+					}
 				</div>
-				{
-					props.params == false ? <StartChat /> : <ChatContent messages={reversedMessages} users={users} admin={admin} pageOf={login} />
-				}
-			</div>
-		</GradienBox>
+			</GradienBox>
+		</div>
 	)
 }
 export default Chat;

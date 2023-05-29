@@ -14,6 +14,7 @@ export type NotificationType = {
 	isRead: boolean
 }
 export type MessageType = {
+	id: number,
 	from: String,
 	to: String,
 	message: String,

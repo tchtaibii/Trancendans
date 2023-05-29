@@ -313,6 +313,10 @@
                 padding-bottom: toRem(27);
                 gap: toRem(49);
 
+                &::-webkit-scrollbar {
+                    width: toRem(0);
+                }
+
                 .messageShow {
                     display: flex;
                     flex-direction: row;
@@ -341,6 +345,7 @@
                         height: fit-content;
                         overflow: hidden;
                         overflow-wrap: break-word;
+                        white-space: pre-wrap;
                     }
                 }
 

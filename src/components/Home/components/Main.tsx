@@ -5,13 +5,12 @@ import GamesMode from './Main/GamesMode'
 import BestPlayers from './Main/BestPlayers'
 import Hero from './Main/Hero'
 import ProfileHome from './Main/ProfileHome'
-import { Route, Routes, useParams } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import "./Main.scss"
 import GradienBox from '../../../tools/GradienBox'
 import avatar from '../../../assets/img/avatar-p.svg'
 import Chat from './Main/Chat/Chat'
-
-
+import Profile from './Main/Profile/Profile'
 
 
 function ActivityContent(props: any) {
@@ -118,11 +117,11 @@ function Invitation(props: any) {
 }
 function HomeRoute() {
 	return (
-		<>
+		<div className="main-core">
 			<Hero />
 			<GamesMode />
 			<BestPlayers />
-		</>
+		</div>
 	)
 }
 // function HomeRoute2() {
@@ -132,6 +131,15 @@ function HomeRoute() {
 // 		</>
 // 	)
 // }
+
+function Side2() {
+	return (
+		<div className='side2'>
+			<ProfileHome /><Activity />
+		</div>
+	)
+}
+
 function Main() {
 	const [invit, setInvit] = useState(false)
 	return (
@@ -141,21 +149,19 @@ function Main() {
 					<Search />
 					<MsgNot />
 				</div>
-				<div className="main-core">
-					<Routes>
-						<Route path="/" element={<HomeRoute />} />
-						<Route path="chat" element={<Chat params={false} />} />
-						<Route path="chat/:login" element={<Chat params={true} />} />
-					</Routes>
-				</div>
+				<Routes>
+					<Route path="/" element={<HomeRoute />} />
+					<Route path="chat" element={<Chat params={false} />} />
+					<Route path="chat/:login" element={<Chat params={true} />} />
+					<Route path="profile/" element={<><Profile /></>} />
+				</Routes>
 			</div>
-			<div className='side2'>
-				<ProfileHome />
-				<Activity />
-				{
-					invit && <Invitation state={setInvit} />
-				}
-			</div>
+				<Routes>
+					<Route path="/" element={<Side2 />} />
+					<Route path="chat" element={<Side2 />} />
+					<Route path="chat/:login" element={<Side2 />} />
+				</Routes>
+				{invit && <Invitation state={setInvit} />}
 		</div>
 	)
 }
