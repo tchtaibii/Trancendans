@@ -18,7 +18,7 @@
 .side1 {
     display: flex;
     flex-direction: column;
-    gap: toRem(62);
+    // gap: toRem(62);
     height: fit-content;
 }
 
@@ -27,6 +27,7 @@
     align-items: center;
     width: toRem(1201);
     gap: 42.875rem;
+    margin-bottom: 3.875rem;
     /* position: fixed; */
     z-index: 100;
     height: toRem(49);

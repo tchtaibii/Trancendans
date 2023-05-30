@@ -153,7 +153,7 @@ function Chat(props: any) {
 	}
 	// const [reversedMessages, setreversedMessages]: any[] = useState([...sortedMessages[0]].reverse());
 	const reversedMessages: any[] = [...sortedMessages[0]].reverse();
-	const messageIds: number[] = reversedMessages.map((msg: any) => msg.id);
+	// const messageIds: number[] = reversedMessages.map((msg: any) => msg.id);
 
 	return (
 		<div className="main-core">
@@ -166,11 +166,11 @@ function Chat(props: any) {
 									<button className='new'>New Group</button>
 									<button onClick={async () => {
 
-										for (const idMsg of messageIds) {
-											await axios.delete(`http://localhost:3001/messages/${idMsg}`);
+										// for (const idMsg of messageIds) {
+											// await axios.delete(`http://localhost:3001/messages/${idMsg}`);
 											// setreversedMessages([]);
 											// setleftChat([]);
-										}
+										// }
 									}} className='clear'>Clear Chat</button>
 								</div>
 								<div className="chatSearch">

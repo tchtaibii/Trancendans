@@ -146,6 +146,7 @@ function Main() {
 				<Route path="chat/:login" element={<Side2 />} />
 			</Routes>
 			{invit && <Invitation state={setInvit} />}
+
 		</div>
 	)
 }
