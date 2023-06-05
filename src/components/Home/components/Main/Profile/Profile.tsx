@@ -1,8 +1,23 @@
 import './Profile.scss'
 import GradienBox from '../../../../../tools/GradienBox'
 import Charts from './Charts'
+import { useSelector } from 'react-redux'
+import { userType } from '../../../../../interface/interfaces'
+import btnSlide from './buttonSlide.svg'
+import { motion, AnimatePresence } from 'framer-motion'
+import ACE from './Ace.svg'
+import { useState } from 'react'
+import avatar from './avatar.svg'
 
-
+const Chat = () => {
+    return (
+        <div>
+            <svg width="1.125rem" height="1.125rem" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M0.891112 12.8589C0.869162 12.812 0.847289 12.7653 0.825725 12.7188C0.295686 11.5746 0 10.3001 0 8.95833C0 4.01078 4.01078 0 8.95833 0C13.9059 0 17.9167 4.01078 17.9167 8.95833C17.9167 13.9059 13.9059 17.9167 8.95833 17.9167C7.94665 17.9167 7.06009 17.7721 6.22805 17.4745C5.48363 17.2082 5.17857 17.1004 5.08652 17.0787C4.52715 16.9472 3.99758 17.2021 3.4721 17.455C3.13281 17.6183 2.79522 17.7808 2.45242 17.8379C1.51535 17.9941 0.681554 17.2269 0.759318 16.2801C0.787101 15.9418 0.918047 15.6527 1.04981 15.3618C1.13469 15.1745 1.2199 14.9863 1.2781 14.7838C1.4738 14.1028 1.17594 13.467 0.891112 12.8589ZM5.625 6.54167C5.21079 6.54167 4.875 6.87745 4.875 7.29167C4.875 7.70588 5.21079 8.04167 5.625 8.04167H12.2917C12.7059 8.04167 13.0417 7.70588 13.0417 7.29167C13.0417 6.87745 12.7059 6.54167 12.2917 6.54167H5.625ZM5.625 9.875C5.21079 9.875 4.875 10.2108 4.875 10.625C4.875 11.0392 5.21079 11.375 5.625 11.375H8.95833C9.37255 11.375 9.70833 11.0392 9.70833 10.625C9.70833 10.2108 9.37255 9.875 8.95833 9.875H5.625Z" fill="white" />
+            </svg>
+        </div>
+    )
+}
 const Infobtn = () => {
     return (
         <button style={{ position: 'relative', top: '0.5rem' }}>
@@ -40,9 +55,11 @@ for (let i = 1200; i >= 0; i -= 240) {
 }
 
 function Profile() {
+    const Admin: userType = useSelector((state: any) => state.admin);
+    const Friends: userType[] = useSelector((state: any) => state.users.users).filter((e: userType) => e.isFriend === true && e.login !== Admin.login);
     return (
         <div className="ProfileComponent-Activity-Friends">
-            <div className="activity-Profile">
+            <div className="fa-Profile">
                 <div className="textActive">
                     <h1>Activity</h1>
                     <Infobtn />
@@ -52,11 +69,220 @@ function Profile() {
                     <GradienBox over={1} mywidth={'767px'} myheight={'324px'} myborder={'40px'}>
                         <Charts />
                     </GradienBox>
-
                 </div>
 
+            </div>
+            <div className="fa-Profile">
+                <h1>Friends</h1>
+                <GradienBox mywidth={'399px'} myheight={'324px'} myborder={'40px'}>
+                    <div className="content-friend">
+                        <div className="content-fri">
+                            {
+                                Friends.map((e: userType) => {
+                                    return (
+                                        <div className="friend-Profile">
+                                            <div className="friend-info">
+                                                <img src={e.avatar} alt="" />
+                                                <p>{e.login}</p>
+                                            </div>
+                                            <div className="buttons-f">
+                                                <button><div>Send Message</div></button>
+                                                <button className='IP'><div >Invite to Play</div></button>
+                                            </div>
+                                        </div>
+                                    )
+                                })
+                            }
+
+                        </div>
+                    </div>
+                </GradienBox>
             </div>
         </div>
     )
 }
+
+
+export function ProfileProfile() {
+    const Admin: userType = useSelector((state: any) => state.admin);
+    return (
+        <GradienBox mywidth={'397px'} myheight={'526px'} myborder={'40px'}>
+            <div className="container-Profile-profile">
+                <h1>Profile</h1>
+                <div className='imgS'>
+                    <img src={Admin.avatar} alt="" />
+                </div>
+                <h2>{Admin.login}</h2>
+                <div className="status"><span className='dotss'></span><span className='txt-status'> Offline</span></div>
+                <div className="buttons-f">
+                    <button><Chat /></button>
+                    <button><Chat /></button>
+                </div>
+                <div className="progress">
+                    <div className="content-progress">
+                        <div className="absoluteProgress"></div>
+                        <h5 className='From'>{'Lv.' + Admin.level}</h5>
+                        <h5 className='center'>1721 XP   /   2000 XP</h5>
+                        <h5 className='to'>Lv.2</h5>
+                    </div>
+                </div>
+                <div className="footerP">
+                    <div className="footerCon">
+                        <div className="footedge">
+                            <h4>Rank</h4>
+                            <h4 className='green'>2</h4>
+                        </div>
+                        <div className="footCenter"></div>
+                        <div className="footedge gaping-edge">
+                            <h4>Ratings</h4>
+                            <h4 className='green'>8.9</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </GradienBox>
+    )
+}
+
+function TheGame(props: any) {
+    return (
+        <div className="firstLayer">
+            <div className="secondLayer">
+                <div className={props.theGame === 'win' ? "gameSta winGame" :
+                    props.theGame === 'lose' ? 'gameSta loseGame' : 'gameSta'}>
+                    <div className="infoGame">
+                        <img src={avatar} alt="Enemey" />
+                        <div className="enemyScore">
+                            <h1>cerulean</h1>
+                            <div className="score">
+                                <h1 className='Goal Win'>10</h1>
+                                <div className="Goal Win">|</div>
+                                <h1 className='Goal Lose'>10</h1>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="xpGame">
+                        <h1>+120 XP</h1>
+                        <h1 className='modeGame'>FRIENDs MODE</h1>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    );
+}
+
+type Archivement = {
+    title: string;
+    img: string;
+}
+export function ProfileDown() {
+    const [index, setIndex] = useState<number>(0);
+    const [Direction, setDirection] = useState<number>(0);
+    var arrayArch: Archivement[] = [];
+    const AceArchivement = {
+        title: 'Ace',
+        img: ACE
+    };
+    arrayArch.push(AceArchivement, { title: 'Mays', img: ACE }, { title: 'Kays', img: ACE })
+    const variants = {
+        initial: (Direction: number) => {
+            return ({
+                x: Direction > 0 ? '23rem' : '-23rem'
+            })
+        },
+        animate: {
+            x: 0,
+        },
+        exit: (Direction: number) => {
+            return ({
+                x: Direction > 0 ? '-23rem' : '23rem'
+            })
+        },
+    }
+    return (
+        <div className="profileDown">
+            <div className="AchivementsProfile">
+                <h1>Achievements</h1>
+                <GradienBox mywidth={'380px'} myheight={'388px'} myborder={'40px'}>
+                    <div className="archivement-container" style={{ overflow: 'hidden' }}>
+                        <button onClick={() => {
+                            setDirection(1)
+                            if (index - 1 < 0)
+                                setIndex(arrayArch.length - 1);
+                            else
+                                setIndex(index - 1);
+                        }} className='button-slide'><div className="backjack"><img src={btnSlide} alt="" /></div></button>
+                        <AnimatePresence initial={false} custom={Direction}>
+                            <motion.h1
+                                key={arrayArch[index].title}
+                                variants={variants}
+                                custom={Direction}
+                                initial='initial'
+                                animate='animate'
+                                exit='exit'
+                                transition={{
+                                    x: { duration: 0.6 },
+                                    opacity: { duration: 0.2 }
+                                }}
+                            >{arrayArch[index].title}
+                            </motion.h1>
+                        </AnimatePresence>
+                        <button onClick={() => {
+                            setDirection(-1)
+                            if (index + 1 >= arrayArch.length)
+                                setIndex(0);
+                            else
+                                setIndex(index + 1);
+                        }} className='button-slide right-btn'><div className="backjack"><img className='imgRight' src={btnSlide} alt="" /></div></button>
+                    </div>
+                </GradienBox>
+            </div>
+            <div className="UpgradeProfile">
+                <h1>Upgrade Progress</h1>
+                <GradienBox mywidth={'344px'} myheight={'388px'} myborder={'40px'}>
+                    <div className="container-pro">
+                        <div className="progress-Cont">
+                            <div className="outer">
+                                <div className="inner">
+                                    <div className="number">79%</div>
+                                </div>
+                            </div>
+                        </div>
+                        <svg className='svg-progress'
+                            xmlns="http://www.w3.org/2000/svg"
+                            version="1.1"
+                            width="27.875rem"
+                            height="27.875rem"
+                        >
+                            <circle className='circle-progress' cx="13.938rem" cy="13.938rem" r="6rem" stroke-linecap="round" />
+                        </svg>
+                        <p>Track progress with dynamic graph arc. Stay motivated towards next climb.</p>
+                    </div>
+                </GradienBox>
+            </div>
+            <div className="HistoryProfile">
+                <h1>Games History</h1>
+                <GradienBox mywidth={'850px'} myheight={'388px'} myborder={'40px'}>
+                    <div className="gameHistory">
+                        <div className="headerHistory">
+                            <div className="game-h wins">7 WINS</div>
+                            <div className="seperator"></div>
+                            <div className="game-h draw">3 DRAW</div>
+                            <div className="seperator"></div>
+                            <div className="game-h lose">1 LOSE</div>
+                        </div>
+                        <div className="gameHistoryC">
+                            <TheGame theGame='win' />
+                            <TheGame theGame='lose' />
+                            <TheGame  />
+                            <TheGame theGame='win' />
+                        </div>
+                    </div>
+                </GradienBox>
+            </div>
+        </div>
+    )
+}
+
 export default Profile;

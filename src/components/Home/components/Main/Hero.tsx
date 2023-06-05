@@ -7,10 +7,10 @@ import { TypeAnimation } from 'react-type-animation';
 function Hero() {
   const data: adminType = useSelector((state: any) => state.admin);
   return (
-    <GradienBox mywidth="1101px" myheight="173px" myborder="40px">
+    <GradienBox mywidth="1201px" myheight="173px" myborder="40px">
       <div className='hero-cont'>
         <div className='part1'>
-          {
+          {/* {
             data &&
             <TypeAnimation
               sequence={[
@@ -34,9 +34,9 @@ function Hero() {
               deletionSpeed={0}
             />
 
-          }
+          } */}
 
-          {/* <h1 style={{ textTransform: 'capitalize' }}>{data && 'Hello ! ' + data.login + '.'}</h1> */}
+          <h1 style={{ textTransform: 'capitalize' }}>{data && 'Hello ! ' + data.login + '.'}</h1>
           <p>Ready for a gaming surprise ? Click 'Play' to start a random game and see what awaits !</p>
         </div>
         <a className='playhero' href='/#' >

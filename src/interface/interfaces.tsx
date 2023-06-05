@@ -6,6 +6,7 @@ export type userType = {
 	points: number,
 	status: boolean;
 	admin: boolean;
+	isFriend: boolean;
 };
 export type NotificationType = {
 	id: number,

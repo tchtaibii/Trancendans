@@ -7,9 +7,9 @@
     padding-left: toRem(68);
     padding-right: toRem(34);
     width: 100%;
-    margin: auto 0;
+    // margin: auto 0;
     // margin-left: toRem(95);
-    gap: 3.6875rem;
+    gap: 4.5rem;
     height: fit-content;
     margin-top: toRem(20);
 
@@ -30,7 +30,7 @@
     margin-bottom: 3.875rem;
     /* position: fixed; */
     z-index: 100;
-    height: toRem(49);
+    // height: toRem(49);
 
 }
 
@@ -62,6 +62,7 @@
     flex-direction: row;
     margin-top: toRem(25);
     gap: toRem(45);
+    width: 100%;
 }
 
 .side2 {
@@ -70,7 +71,7 @@
     position: relative;
     /* position: fixed;
     left: toRem(1433);*/
-    height: toRem(958);
+    // height: toRem(958);
 }
 
 .bp-cont {
@@ -96,7 +97,8 @@
             flex-direction: row;
             /*  justify-content: center;*/
             align-items: center;
-            gap: toRem(120);
+            // gap: toRem(120);
+            gap: toRem(240);
             padding-left: toRem(27);
             padding-right: toRem(61);
             width: 100%;
@@ -124,6 +126,7 @@
             flex-flow: column wrap;
             gap: toRem(16);
             align-items: center;
+            column-gap: 8.5rem;
 
             >div:nth-child(odd) {
                 background-color: #363336;
@@ -238,7 +241,8 @@
 .trophet {
     width: 12rem;
     position: absolute;
-    transform: translate(28rem, -7rem);
+    // transform: translate(28rem, -7rem);
+    transform: translate(toRem(508), toRem(44));
 }
 
 .activity {
@@ -583,4 +587,8 @@
     left: toRem(376);
     top: toRem(14);
     cursor: pointer;
+}
+.gamesmodeCont {
+    width: toRem(1201);
+    // gap: 0;
 }

@@ -23,11 +23,11 @@ ChartJS.register(
 );
 
 const labels = ["First Game", "Second Game", "Third Game", "Fourth Game", "Fifth Game", "Sixth Game", "Seventh Game", "Eighth Game", "Ninth Game", "Tenth Game"];
-var element: number[] = [0, 60, 120, 240, 300, 100];
+var element: number[] = [60, 120, 240, 120, 240, 360, 480, 520, 640, 760];
 const LastOne = Math.max(...element);
 const colorGraph = {
     Fail: { gradient: 'rgba(237, 81, 82, 0.3)', endColor: 'rgba(237, 81, 82, 0)', border: "#ED5152" },
-    success: { gradient: 'rgba(0, 136, 122, 0.3)', endColor: 'rgba(0, 136, 122, 0)', border: "#00887A " }
+    success: { gradient: 'rgba(0, 136, 122, 0.3)', endColor: 'rgba(0, 136, 122, 0)', border: "#00887A "}
 
 }
 const data = {
@@ -83,7 +83,7 @@ const options = {
                 label: (context: any) => {
                     const label = context.chart.data.labels[context.dataIndex];
                     const data = context.parsed.y;
-                    return `You have collected in your ${label} a <span style="color: red;">${data}</span> points`;
+                    return `You have collected in your ${label} a ${data} points`;
                 },
                 labelColor: () => ({
                     borderColor: 'transparent',

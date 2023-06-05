@@ -3,9 +3,9 @@ import "./GamesMode.scss"
 import classicI from '../../../../assets/img/classicM.svg'
 import aiI from '../../../../assets/img/aiM.svg'
 import friendI from '../../../../assets/img/friendM.svg'
-import Spline from '@splinetool/react-spline';
 
-function BOxGame(props:any){
+
+function BOxGame(props: any) {
 	return (
 		<GradienBox mywidth="335px" myheight="195px" myborder="40px">
 			<div className="ModePlay">
@@ -19,20 +19,37 @@ function BOxGame(props:any){
 					</a>
 				</div>
 				<div className={props.classB + ' photoMode'}>
-					<img id={props.imgID} src={props.imgB} alt=""/>
+					<img id={props.imgID} src={props.imgB} alt="" />
 				</div>
 			</div>
 		</GradienBox>
 	)
 }
+
+const GameModesArr = [
+	<BOxGame idA='classicA' imgID='classicIMG' classB="classic" titleB="Classic" StitleB='Challenge the computer' linkB="#" imgB={classicI} />,
+	<BOxGame idA='aiA' imgID='aiIMG' classB="ai" titleB="AI Mode" StitleB='Traditional gameplay' linkB="#" imgB={aiI} />,
+	<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="friends mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />
+]
+
+
+const Slide = () => {
+	return (
+		<>
+		</>
+	);
+}
+
 function GamesMode() {
 	return (
 		<div className='box-box-cont'>
 			<h1 className='title-h1'>Games mode</h1>
-			<div className='box-cont'>
-				<BOxGame idA='classicA' imgID='classicIMG' classB="classic" titleB="Classic" StitleB='Challenge the computer' linkB="#"  imgB={classicI}/>
-				<BOxGame idA='aiA' imgID='aiIMG' classB="ai" titleB="AI Mode" StitleB='Traditional gameplay' linkB="#"  imgB={aiI}/>
-				<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="friends mode" StitleB='Social play, easy invites' linkB="#"  imgB={friendI}/>
+			<div className='box-cont gamesmodeCont'>
+				{
+					GameModesArr.map((e: any) => {
+						return e;
+					})
+				}
 			</div>
 		</div>
 	)

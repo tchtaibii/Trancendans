@@ -5,9 +5,10 @@
       "level": 0,
       "lastGame": "won",
       "avatar": "https://cdn.intra.42.fr/users/6c3254ce8284773a5434fc4975c8f21f/hboukili.jpg",
-      "points": -15,
+      "points": 1000,
       "status": true,
-      "admin": false
+      "admin": false,
+      "isFriend": true
     },
     {
       "login": "schoukou",
@@ -16,7 +17,8 @@
       "avatar": "https://cdn.intra.42.fr/users/561324f840ae97d18056fdff7420095a/schoukou.jpg",
       "points": 10660,
       "status": false,
-      "admin": false
+      "admin": false,
+      "isFriend": true
     },
     {
       "login": "aaizza",
@@ -25,7 +27,8 @@
       "avatar": "https://cdn.intra.42.fr/users/150000b335de20e92f5b2cce56740da8/aaizza.jpg",
       "points": 0,
       "status": false,
-      "admin": false
+      "admin": false,
+      "isFriend": true
     },
     {
       "login": "tchtaibi",
@@ -34,7 +37,8 @@
       "avatar": "https://cdn.intra.42.fr/users/d00282f766753d56196928b23a2f9b00/tchtaibi.jpg",
       "points": 11660,
       "status": true,
-      "admin": true
+      "admin": true,
+      "isFriend": true
     }
   ],
   "notifications": [

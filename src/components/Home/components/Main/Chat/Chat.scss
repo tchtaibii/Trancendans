@@ -4,16 +4,16 @@
     display: flex;
     width: 100%;
     height: 100%;
-    padding-left: toRem(28);
-    padding-right: toRem(23);
+    padding-left: 2.72875rem;
+    padding-right: 2.72875rem;
     padding-bottom: toRem(38);
     padding-top: toRem(32);
-    gap: toRem(43.66);
+    gap: 2.72875rem;
 
     .chatUsers {
         display: flex;
         flex-direction: column;
-        width: toRem(299);
+        width: fit-content;
         padding-right: toRem(5);
 
         .chatUsersmesage {
@@ -27,7 +27,7 @@
 
             .headerLeftChat {
                 display: flex;
-                width: toRem(295.93);
+                // width: toRem(295.93);
                 flex-direction: column;
                 gap: toRem(22);
 
@@ -112,7 +112,7 @@
                     height: toRem(110);
                     display: flex;
                     background: rgba(35, 34, 36, 0.7);
-                    border-radius: 40px;
+                    border-radius: toRem(40);
                     display: flex;
                     // justify-content: center;
                     align-items: center;
@@ -169,6 +169,7 @@
         // height: toRem(735);
         flex-direction: column;
         gap: toRem(27);
+        width: 100%;
 
         .header {
             display: flex;
@@ -242,7 +243,7 @@
 
         .content {
             display: flex;
-            width: toRem(705.49);
+            width: 100%;
             height: toRem(735);
             background: rgba(35, 34, 36, 0.7);
             border-top-left-radius: toRem(40);
@@ -252,7 +253,7 @@
 
             .messageSend {
                 display: flex;
-                width: toRem(704);
+                width: 100%;
                 height: toRem(69);
                 // max-height: toRem(200);
                 background: rgba(29, 27, 30, 0.7);
@@ -303,9 +304,9 @@
             .messages {
                 display: flex;
                 flex-direction: column-reverse;
-                width: 100%;
+                // width: 100%;
                 height: fit-content;
-                max-height: toRem(600);
+                height: toRem(600);
                 overflow-x: hidden;
                 overflow-y: auto;
                 padding-top: toRem(33);
@@ -388,9 +389,9 @@
     padding-left: toRem(18);
     width: toRem(180);
     height: toRem(100);
-    border: 1px solid rgba(237, 81, 82, 0.18);
+    border: toRem(1) solid rgba(237, 81, 82, 0.18);
     top: toRem(74);
-    left: toRem(899);
+    left: toRem(965);
 
     button {
         width: fit-content;

@@ -12,7 +12,8 @@ body:has(.playhero:hover) .backgroundA {
     padding-left: toRem(35);
     padding-right: toRem(19);
     align-items: center;
-    gap: toRem(86);
+    // gap: toRem(86);
+    justify-content: space-between;
 
     a {
         width: toRem(200);
@@ -96,7 +97,7 @@ body:has(.playhero:hover) .backgroundA {
             background-image: url('../../../../assets/img/Hero.svg');
             background-size: cover;
             top: toRem(-112);
-            left: 33rem;
+            left: 40rem;
         }
 
         h1 {

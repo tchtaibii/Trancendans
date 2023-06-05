@@ -10,7 +10,7 @@ import "./Main.scss"
 import GradienBox from '../../../tools/GradienBox'
 import avatar from '../../../assets/img/avatar-p.svg'
 import Chat from './Main/Chat/Chat'
-import Profile from './Main/Profile/Profile'
+import Profile, { ProfileProfile, ProfileDown } from './Main/Profile/Profile'
 
 
 function ActivityContent(props: any) {
@@ -116,10 +116,14 @@ function Invitation(props: any) {
 	);
 }
 
-function Side2() {
+function Side2(props: any) {
 	return (
+
 		<div className='side2'>
-			<ProfileHome /><Activity />
+			{
+				props.isN === 1 ? <> <ProfileHome /><Activity /></> :
+					<ProfileProfile />
+			}
 		</div>
 	)
 }
@@ -127,26 +131,31 @@ function Side2() {
 function Main() {
 	const [invit, setInvit] = useState(false)
 	return (
-		<div className='main'>
-			<div className="side1">
-				<div className='top'>
-					<Search />
-					<MsgNot />
+		<div style={{display: 'flex', flexDirection: 'column', marginBottom: 'auto'}}>
+			<div className='main'>
+				<div className="side1">
+					<div className='top'>
+						<Search />
+						<MsgNot />
+					</div>
+					<Routes>
+						<Route path="/" element={<><Hero /><GamesMode /><BestPlayers /></>} />
+						<Route path="chat" element={<Chat params={false} />} />
+						<Route path="chat/:login" element={<Chat params={true} />} />
+						<Route path="profile/" element={<><Profile /></>} />
+					</Routes>
 				</div>
 				<Routes>
-					<Route path="/" element={<><Hero /><GamesMode /><BestPlayers /></>} />
-					<Route path="chat" element={<Chat params={false} />} />
-					<Route path="chat/:login" element={<Chat params={true} />} />
-					<Route path="profile/" element={<><Profile /></>} />
+					<Route path="/" element={<Side2 isN={1} />} />
+					<Route path="chat" element={<Side2 isN={1} />} />
+					<Route path="chat/:login" element={<Side2 isN={1} />} />
+					<Route path="/profile" element={<Side2 isN={0} />} />
 				</Routes>
+				{invit && <Invitation state={setInvit} />}
 			</div>
 			<Routes>
-				<Route path="/" element={<Side2 />} />
-				<Route path="chat" element={<Side2 />} />
-				<Route path="chat/:login" element={<Side2 />} />
+				<Route path="/profile" element={<ProfileDown />} />
 			</Routes>
-			{invit && <Invitation state={setInvit} />}
-
 		</div>
 	)
 }

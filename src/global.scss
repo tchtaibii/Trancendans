@@ -12,20 +12,10 @@ $my-blue : #00887A;
 }
 @mixin backblur($w, $h, $color)
 {
-    &::after{
-        content: "";
-        position: absolute;
-        width: $w;
-        height: $h;
-        background-color: $color;
-        filter: blur(29px);
-        opacity: 0.4;
-        z-index: -1;
-    }
+
 }
 @function toRem($value) {
     // $remValue: ($value / 16) + rem; 
-    
     $remValue: math.div($value, 16);
     $return-v : $remValue + rem;
     @return $return-v;

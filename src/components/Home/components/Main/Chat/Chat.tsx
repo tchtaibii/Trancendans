@@ -157,7 +157,7 @@ function Chat(props: any) {
 
 	return (
 		<div className="main-core">
-			<GradienBox mywidth="1097px" myheight="850px" myborder="40px">
+			<GradienBox mywidth="1201px" myheight="850px" myborder="40px">
 				<div className="chatContainer">
 					<div className="chatUsers">
 						<div className="chatUsersmesage">

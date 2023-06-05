@@ -54,6 +54,7 @@
     justify-content: center;
     align-items: center;
     z-index: 98;
+
     // height: 100%;
     // position: absolute;
     // transform: translate(toRem(49), toRem(5)) scale(0.7);
@@ -119,4 +120,25 @@ body:has(#aiA:hover) #aiIMG {
 body:has(#friendA:hover) #friendIMG {
     // filter: saturate(0);
     transform: scale(2.1);
+}
+
+.swiper-3d,
+.swiper-slide-shadow-left,
+.swiper-slide-shadow-right {
+    display: none;
+}
+
+.swiper-wrapper {
+    // padding: toRem(50) 0;
+    // height: toRem(230);
+}
+
+.swiper-slide {
+    filter: blur(toRem(2));
+    opacity: 0.8;
+}
+
+.swiper-slide-active {
+    filter: blur(toRem(0));
+    opacity: 1;
 }
