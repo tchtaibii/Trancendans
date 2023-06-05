@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-three/fiber": "^8.13.0",
     "@reduxjs/toolkit": "^1.9.5",
     "@splinetool/react-spline": "^2.2.6",
     "@splinetool/runtime": "^0.9.345",
@@ -33,12 +34,14 @@
     "socket.io-client": "^4.6.1",
     "swiper": "9.1.1",
     "swiper-react": "1.0.0",
+    "three": "^0.153.0",
     "tsparticles": "^2.9.3",
     "usehooks-ts": "^2.9.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
     "@types/react-dom": "^18.0.11",
+    "@types/three": "^0.152.1",
     "@typescript-eslint/eslint-plugin": "^5.57.1",
     "@typescript-eslint/parser": "^5.57.1",
     "@vitejs/plugin-react-swc": "^3.0.0",

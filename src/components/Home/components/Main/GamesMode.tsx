@@ -3,6 +3,7 @@ import "./GamesMode.scss"
 import classicI from '../../../../assets/img/classicM.svg'
 import aiI from '../../../../assets/img/aiM.svg'
 import friendI from '../../../../assets/img/friendM.svg'
+import { useEffect, useState } from 'react'
 
 
 function BOxGame(props: any) {
@@ -32,25 +33,39 @@ const GameModesArr = [
 	<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="friends mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />
 ]
 
-
-const Slide = () => {
-	return (
-		<>
-		</>
-	);
-}
-
 function GamesMode() {
+	const [slideArray, setArraySlide] = useState<any[]>([]);
+	useEffect(() => {
+		setArraySlide([GameModesArr[0], GameModesArr[1], GameModesArr[2], GameModesArr[GameModesArr.length % GameModesArr.length]]);
+	}, [])
+	const NextSlide = () => {
+		const arraytmp = slideArray;
+		console.log('before : ', arraytmp.length)
+		const firstEl: any = arraytmp.shift();
+		console.log('after : ', arraytmp.length)
+		arraytmp.push(firstEl);
+		setArraySlide([...arraytmp]);
+		// console.log('before : ', slideArray)
+	}
+	const PrevSlide = () => {
+		const arraytmp = slideArray;
+		console.log('before : ', arraytmp.length)
+		const lastEl: any = arraytmp.pop();
+		console.log('after : ', arraytmp.length)
+		arraytmp.unshift(lastEl);
+		setArraySlide([...arraytmp]);
+		// console.log('before : ', slideArray)
+	}
 	return (
 		<div className='box-box-cont'>
 			<h1 className='title-h1'>Games mode</h1>
 			<div className='box-cont gamesmodeCont'>
 				{
-					GameModesArr.map((e: any) => {
-						return e;
-					})
+					slideArray.filter((e, index) => index != slideArray.length - 1)
 				}
 			</div>
+			<button onClick={() => { PrevSlide() }}>NEXT</button>
+			<button onClick={() => { NextSlide() }}>PREV</button>
 		</div>
 	)
 }

@@ -4,36 +4,35 @@ import Home from './components/Home/Home';
 import { useDispatch } from 'react-redux';
 import { getUsers } from './features/usersSlice'
 import { getNotification } from './features/notificationsSlice'
-import { useEffect } from 'react'
+import { useEffect, useRef } from 'react'
 import { AppDispatch } from './store/store'
 import Particle from './tools/ParticalComponent';
 import { getMessage } from './features/messageSlice';
-
+import { Canvas, useFrame } from "@react-three/fiber";
+import { Mesh } from 'three';
 var isLogin: boolean = true;
 
-
 function App() {
-  const dispatch: AppDispatch = useDispatch()
+	const dispatch: AppDispatch = useDispatch()
 
-  useEffect(() => {
-    const fetchData = async () => {
-      await dispatch(getUsers());
-      await dispatch(getNotification());
-      await dispatch(getMessage());
-    };
-  
-    fetchData();
-  }, []);
+	useEffect(() => {
+		const fetchData = async () => {
+			await dispatch(getUsers());
+			await dispatch(getNotification());
+			await dispatch(getMessage());
+		};
 
-  return (
-    <div className="App">
-      <Particle />
-      {!isLogin && <Login />}
-      {
-        isLogin && <Home />
-      }
-    </div>
-  );
+		fetchData();
+	}, []);
+	return (
+		<div className="App">
+			<Particle />
+			{!isLogin && <Login />}
+			{
+				isLogin && <Home />
+			}
+		</div>
+	);
 }
 
 export default App;
