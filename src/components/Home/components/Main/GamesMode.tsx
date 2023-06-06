@@ -30,112 +30,181 @@ function BOxGame(props: any) {
 
 
 function GamesMode() {
-	const [Direction, setDirection] = useState<string>('-23.875rem');
-	useEffect(() => {
-		// setDirection('-23.875rem')
-	}, [])
+	const [direction, setDirection] = useState<string>('-23.875rem');
 
 	const variants = {
-		initial: {
-			x: Direction,
-		},
+		initial: (D: string) => ({
+			x: D,
+		}),
 		animate: {
 			x: 0,
 		},
-		exit: {
-			x: Direction === '-23.875rem' ? '23.875rem' : '-23.875rem',
-		},
+		exit: (D: string) => ({
+			x: D === '23.875rem' ? '-23.875rem' : '23.875rem',
+		}),
 	};
+	// var GameModesArr = [
+	// 	<motion.div
+	// 		key='classicS'
+	// 		variants={variants}
+	// 		custom={direction}
+	// 		initial='initial'
+	// 		animate='animate'
+	// 		exit='exit'
+	// 		transition={{
+	// 			x: { duration: 0.6 },
+	// 		}}
+	// 	>
+	// 		<BOxGame idA='classicA' imgID='classicIMG' classB="classic" titleB="Classic" StitleB='Challenge the computer' linkB="#" imgB={classicI} />
+	// 	</motion.div>,
+	// 	<motion.div
+	// 		key='AIS'
+	// 		variants={variants}
+	// 		custom={direction}
+	// 		initial='initial'
+	// 		animate='animate'
+	// 		exit='exit'
+	// 		transition={{
+	// 			x: { duration: 0.6 },
+	// 		}}
+	// 	>
+	// 		<BOxGame idA='aiA' imgID='aiIMG' classB="ai" titleB="AI Mode" StitleB='Traditional gameplay' linkB="#" imgB={aiI} />
+	// 	</motion.div>,
+	// 	<motion.div
+	// 		key='friendsS'
+	// 		variants={variants}
+	// 		custom={direction}
+	// 		initial='initial'
+	// 		animate='animate'
+	// 		exit='exit'
+	// 		transition={{
+	// 			x: { duration: 0.6 },
+	// 		}}
+	// 	>
+	// 		<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="Friends Mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />
+	// 	</motion.div>,
+	// 	<motion.div
+	// 		key='friends2'
+	// 		variants={variants}
+	// 		custom={direction}
+	// 		initial='initial'
+	// 		animate='animate'
+	// 		exit='exit'
+	// 		transition={{
+	// 			x: { duration: 0.6 },
+	// 		}}
+	// 	>
+	// 		<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="Friends Mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />
+	// 	</motion.div>,
+	// 	<motion.div
+	// 		key='friends2d'
+	// 		variants={variants}
+	// 		custom={direction}
+	// 		initial='initial'
+	// 		animate='animate'
+	// 		exit='exit'
+	// 		transition={{
+	// 			x: { duration: 0.6 },
+	// 		}}
+	// 	>
+	// 		<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="Friends Mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />
+	// 	</motion.div>,
+	// 	<motion.div
+	// 		key='friendsss2'
+	// 		variants={variants}
+	// 		custom={direction}
+	// 		initial='initial'
+	// 		animate='animate'
+	// 		exit='exit'
+	// 		transition={{
+	// 			x: { duration: 0.6 },
+	// 		}}
+	// 	>
+	// 		<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="Friends Mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />
+	// 	</motion.div>
+	// ];
+	const [GameModesArr, setGameModesArr] = useState<any[]>([
+		<BOxGame idA='classicA' imgID='classicIMG' classB="classic" titleB="Classic" StitleB='Challenge the computer' linkB="#" imgB={classicI} />,
+		<BOxGame idA='aiA' imgID='aiIMG' classB="ai" titleB="AI Mode" StitleB='Traditional gameplay' linkB="#" imgB={aiI} />,
+		<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="Friends Mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />,
+		<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="Friends Mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />,
+	])
 
-	const GameModesArr = [
-		<motion.div
-			key='classicS'
-			variants={variants}
-			initial='initial'
-			animate='animate'
-			exit='exit'
-			transition={{
-				x: { duration: 0.6 },
-			}}
-		>
-			<BOxGame idA='classicA' imgID='classicIMG' classB="classic" titleB="Classic" StitleB='Challenge the computer' linkB="#" imgB={classicI} />
-		</motion.div>,
-		<motion.div
-			key='AIS'
-			variants={variants}
-			initial='initial'
-			animate='animate'
-			exit='exit'
-			transition={{
-				x: { duration: 0.6 },
-			}}
-		>
-			<BOxGame idA='aiA' imgID='aiIMG' classB="ai" titleB="AI Mode" StitleB='Traditional gameplay' linkB="#" imgB={aiI} />
-		</motion.div>,
-		<motion.div
-			key='friendsS'
-			variants={variants}
-			initial='initial'
-			animate='animate'
-			exit='exit'
-			transition={{
-				x: { duration: 0.6 },
-			}}
-		>
-			<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="Friends Mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />
-		</motion.div>,
-		<motion.div
-			key='friendsSss'
-			variants={variants}
-			initial='initial'
-			animate='animate'
-			exit='exit'
-			transition={{
-				x: { duration: 0.6 },
-			}}
-		>
-			<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="Friends Mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />
-		</motion.div>,
-	];
-
-	const [slideArray, setArraySlide] = useState<any[]>(GameModesArr);
+	const [slideArray, setArraySlide] = useState<any[]>(GameModesArr.map((e: any, index: number) => {
+		return (
+			<motion.div
+				key={index + '--slider'}
+				variants={variants}
+				custom={direction}
+				initial='initial'
+				animate='animate'
+				exit='exit'
+				transition={{
+					x: { duration: 0.6 },
+				}}
+			>
+				{e}
+			</motion.div>
+		)
+	}));
 
 	const NextSlide = () => {
-		setDirection('-23.875rem');
-		const arraytmp = [...slideArray];
-		const lastEl = arraytmp.pop();
-		arraytmp.unshift(lastEl);
-		setArraySlide(arraytmp);
+		setDirection('23.875rem');
+		const newArray = GameModesArr.slice();
+		const lastEl: any = newArray.pop();
+		newArray.unshift(lastEl);
+		setGameModesArr(newArray.slice());
+		setArraySlide(GameModesArr.map((e: any, index: number) => {
+			return (
+				<motion.div
+					key={index + '-s-slider'}
+					variants={variants}
+					custom={direction}
+					initial='initial'
+					animate='animate'
+					exit='exit'
+					transition={{
+						x: { duration: 0.6 },
+					}}
+				>
+					{e}
+				</motion.div>
+			)
+		}));
 	};
 
 	const PrevSlide = () => {
-		setDirection('23.875rem');
-		const arraytmp = [...slideArray];
-		const firstEl = arraytmp.shift();
-		arraytmp.push(firstEl);
-		setArraySlide(arraytmp);
+		setDirection('-23.875rem');
+		const newArray = GameModesArr.slice();
+		const firstEl: any = newArray.shift();
+		newArray.push(firstEl);
+		setGameModesArr(newArray.slice());
+		setArraySlide(GameModesArr.map((e: any, index: number) => {
+			return (
+				<motion.div
+					key={index + '--slider'}
+					variants={variants}
+					custom={direction}
+					initial='initial'
+					animate='animate'
+					exit='exit'
+					transition={{
+						x: { duration: 0.6 },
+					}}
+				>
+					{e}
+				</motion.div>
+			)
+		}));
 	};
-
-	useEffect(() => {
-		// setArraySlide([GameModesArr[0], GameModesArr[1], GameModesArr[2]]);
-	}, []);
 
 	return (
 		<div className='box-box-cont'>
 			<h1 className='title-h1'>Games mode</h1>
 			<div className='box-cont gamesmodeCont'>
-				<AnimatePresence>
+				<AnimatePresence initial={false} custom={direction}>
 					{slideArray.map((slide, index) => (
-						<motion.div
-							key={`slide-${index}`}
-							variants={variants}
-							initial='initial'
-							animate='animate'
-							exit='exit'
-							transition={{
-								x: { duration: 0.6 },
-							}}
-						>
+						<motion.div key={`slide-${index}`}>
 							{slide}
 						</motion.div>
 					))}
@@ -146,5 +215,4 @@ function GamesMode() {
 		</div>
 	);
 }
-
 export default GamesMode;
