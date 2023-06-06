@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 
 
+
 function BOxGame(props: any) {
 	return (
 		<GradienBox mywidth="335px" myheight="195px" myborder="40px">
@@ -50,25 +51,25 @@ function GamesMode() {
 	const GameModesArr = [
 		<BOxGame idA='classicA' imgID='classicIMG' classB="classic" titleB="Classic" StitleB='Challenge the computer' linkB="#" imgB={classicI} />,
 		<BOxGame idA='aiA' imgID='aiIMG' classB="ai" titleB="AI Mode" StitleB='Traditional gameplay' linkB="#" imgB={aiI} />,
-		<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="Friends Mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />,
+		<BOxGame idA='friendA' imgID='friendIMG' classB="friend" titleB="Friends Mode" StitleB='Social play, easy invites' linkB="#" imgB={friendI} />
 	];
 
 	const [slideArray, setArraySlide] = useState<any[]>(GameModesArr);
 
 	const NextSlide = () => {
 		const arraytmp = [...slideArray];
-		const lastEl = arraytmp.pop();
-		arraytmp.unshift(lastEl);
+		const firstEl = arraytmp.shift();
+		arraytmp.push(firstEl);
+		setDirection(-1);
 		setArraySlide(arraytmp);
-		setDirection(1);
 	};
 
 	const PrevSlide = () => {
 		const arraytmp = [...slideArray];
-		const firstEl = arraytmp.shift();
-		arraytmp.push(firstEl);
+		const lastEl = arraytmp.pop();
+		arraytmp.unshift(lastEl);
+		setDirection(1);
 		setArraySlide(arraytmp);
-		setDirection(-1);
 	};
 
 	useEffect(() => {
@@ -79,7 +80,7 @@ function GamesMode() {
 		<div className='box-box-cont'>
 			<h1 className='title-h1'>Games mode</h1>
 			<div className='box-cont gamesmodeCont'>
-				<AnimatePresence initial={false} custom={Direction}>
+				<AnimatePresence initial={false} custom={Direction} mode='wait'>
 					{slideArray.map((slide, index) => (
 						<motion.div
 							key={`slide-${index}`}
@@ -89,7 +90,8 @@ function GamesMode() {
 							animate='animate'
 							exit='exit'
 							transition={{
-								x: { duration: 0.6 },
+								x: { duration: 0.1 },
+								opacity: { duration: 0.2 },
 							}}
 						>
 							{slide}
@@ -98,6 +100,7 @@ function GamesMode() {
 				</AnimatePresence>
 			</div>
 			<button onClick={PrevSlide}>PREV</button>
+			<br/>
 			<button onClick={NextSlide}>NEXT</button>
 		</div>
 	);
