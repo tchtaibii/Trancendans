@@ -28,30 +28,29 @@ function BOxGame(props: any) {
 	);
 }
 
-const variants = {
-	initial: (Direction: number) => {
-		return {
-			x: Direction > 0 ? '23.875rem' : '-23.875rem',
-		};
-	},
-	animate: {
-		x: 0,
-	},
-	exit: (Direction: number) => {
-		return {
-			x: Direction > 0 ? '-23.875rem' : '23.875rem',
-		};
-	},
-};
 
 function GamesMode() {
-	const [Direction, setDirection] = useState<number>(0);
+	const [Direction, setDirection] = useState<string>('-23.875rem');
+	useEffect(() => {
+		// setDirection('-23.875rem')
+	}, [])
+
+	const variants = {
+		initial: {
+			x: Direction,
+		},
+		animate: {
+			x: 0,
+		},
+		exit: {
+			x: Direction === '-23.875rem' ? '23.875rem' : '-23.875rem',
+		},
+	};
 
 	const GameModesArr = [
 		<motion.div
 			key='classicS'
 			variants={variants}
-			custom={Direction}
 			initial='initial'
 			animate='animate'
 			exit='exit'
@@ -64,7 +63,6 @@ function GamesMode() {
 		<motion.div
 			key='AIS'
 			variants={variants}
-			custom={Direction}
 			initial='initial'
 			animate='animate'
 			exit='exit'
@@ -77,7 +75,6 @@ function GamesMode() {
 		<motion.div
 			key='friendsS'
 			variants={variants}
-			custom={Direction}
 			initial='initial'
 			animate='animate'
 			exit='exit'
@@ -90,7 +87,6 @@ function GamesMode() {
 		<motion.div
 			key='friendsSss'
 			variants={variants}
-			custom={Direction}
 			initial='initial'
 			animate='animate'
 			exit='exit'
@@ -105,19 +101,19 @@ function GamesMode() {
 	const [slideArray, setArraySlide] = useState<any[]>(GameModesArr);
 
 	const NextSlide = () => {
+		setDirection('-23.875rem');
 		const arraytmp = [...slideArray];
 		const lastEl = arraytmp.pop();
 		arraytmp.unshift(lastEl);
 		setArraySlide(arraytmp);
-		setDirection(1);
 	};
 
 	const PrevSlide = () => {
+		setDirection('23.875rem');
 		const arraytmp = [...slideArray];
 		const firstEl = arraytmp.shift();
 		arraytmp.push(firstEl);
 		setArraySlide(arraytmp);
-		setDirection(-1);
 	};
 
 	useEffect(() => {
@@ -128,12 +124,11 @@ function GamesMode() {
 		<div className='box-box-cont'>
 			<h1 className='title-h1'>Games mode</h1>
 			<div className='box-cont gamesmodeCont'>
-				<AnimatePresence custom={Direction} >
+				<AnimatePresence>
 					{slideArray.map((slide, index) => (
 						<motion.div
 							key={`slide-${index}`}
 							variants={variants}
-							custom={Direction}
 							initial='initial'
 							animate='animate'
 							exit='exit'
