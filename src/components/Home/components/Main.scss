@@ -589,7 +589,11 @@
     cursor: pointer;
 }
 .gamesmodeCont {
-    width: toRem(1201);
+    width: 76.2rem;
     overflow: hidden;
     // gap: 0;
+    padding-left: toRem(50);
+    padding-right: toRem(50);
+    position: relative;
+    left: toRem(4);
 }
