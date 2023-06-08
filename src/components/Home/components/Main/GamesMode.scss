@@ -143,12 +143,18 @@ body:has(#friendA:hover) #friendIMG {
     // overflow: visible;
     height: toRem(244);
     // display: contents;
-    padding-top: toRem(17);
+    padding-top: toRem(25);
+    overflow-y: visible;
 }
 
 .owl-item.active.center {
     filter: blur(0px);
     // filter: ;
+    div{
+        .container-games{
+            box-shadow: 0px 0px toRem(15) rgba(53, 118, 123, 0.5);
+        }
+    }
 }
 
 .custom-nav-btn {

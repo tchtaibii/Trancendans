@@ -11,6 +11,7 @@ import GradienBox from '../../../tools/GradienBox'
 import avatar from '../../../assets/img/avatar-p.svg'
 import Chat from './Main/Chat/Chat'
 import Profile, { ProfileProfile, ProfileDown } from './Main/Profile/Profile'
+import Settings from './Main/Settings/Settings'
 
 
 function ActivityContent(props: any) {
@@ -143,10 +144,12 @@ function Main() {
 						<Route path="chat" element={<Chat params={false} />} />
 						<Route path="chat/:login" element={<Chat params={true} />} />
 						<Route path="profile/" element={<><Profile /></>} />
+						<Route path="settings/" element={<><Settings/></>} />
 					</Routes>
 				</div>
 				<Routes>
 					<Route path="/" element={<Side2 isN={1} />} />
+					<Route path="/settings" element={<Side2 isN={1} />} />
 					<Route path="chat" element={<Side2 isN={1} />} />
 					<Route path="chat/:login" element={<Side2 isN={1} />} />
 					<Route path="/profile" element={<Side2 isN={0} />} />
