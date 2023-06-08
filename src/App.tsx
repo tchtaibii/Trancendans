@@ -8,8 +8,6 @@ import { useEffect, useRef } from 'react'
 import { AppDispatch } from './store/store'
 import Particle from './tools/ParticalComponent';
 import { getMessage } from './features/messageSlice';
-import { Canvas, useFrame } from "@react-three/fiber";
-import { Mesh } from 'three';
 var isLogin: boolean = true;
 
 function App() {

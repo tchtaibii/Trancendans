@@ -427,15 +427,15 @@ svg {
 
 .offline-active-btn {
     left: toRem(82);
-    animation: friendActive 0.2s ease-in 0s 1 normal forwards;
+    animation: online 0.2s ease-in 0s 1 normal forwards;
 }
 
 .online-active-btn {
     left: toRem(2);
-    animation: allActive 0.2s ease-in 0s 1 normal forwards;
+    animation: offline 0.2s ease-in 0s 1 normal forwards;
 }
 
-@keyframes allActive {
+@keyframes offline {
     0% {
         left: toRem(82);
         // opacity: 0;
@@ -451,7 +451,7 @@ svg {
 
 }
 
-@keyframes friendActive {
+@keyframes online {
     0% {
         left: 0.125rem;
     }

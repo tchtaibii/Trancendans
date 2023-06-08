@@ -49,7 +49,7 @@ const Edit = () => {
 function Settings() {
     const Admin = useSelector((state: any) => state.admin);
     const [LinkGoogle, setLinkGoogle] = useState(true);
-    const [isOn, setisOn] = useState(false);
+    const [isOff, setisOff] = useState(false);
 
     const handleChange = (event: any) => {
         if (event.target.checked) {
@@ -131,9 +131,9 @@ function Settings() {
                         <div className="bottom-cont bottom-update">
                             <h2>Default Status</h2>
                             <div className="button-switch">
-                                <div className={!isOn? "switch-back offline-active-btn" : 'switch-back online-active-btn'} />
-                                <button onClick={() => !isOn && setisOn(true)} className='online-btn'>Offline</button>
-                                <button onClick={() => isOn && setisOn(false)} className='offline-btn'>Online</button>
+                                <div className={!isOff ? "switch-back offline-active-btn" : 'switch-back online-active-btn'} />
+                                <button onClick={() => !isOff && setisOff(true)} className='online-btn'>Offline</button>
+                                <button onClick={() => isOff && setisOff(false)} className='offline-btn'>Online</button>
                             </div>
                         </div>
                     </div>
