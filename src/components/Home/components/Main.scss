@@ -4,14 +4,16 @@
     display: flex;
     flex-direction: row;
     // padding-top: toRem(23);
-    padding-left: toRem(68);
+    // padding-left: toRem(68);
     padding-right: toRem(34);
     width: 100%;
     // margin: auto 0;
     // margin-left: toRem(95);
-    gap: 4.5rem;
+    // gap: 4.5rem;
     height: fit-content;
+    justify-content: space-between;
     margin-top: toRem(20);
+    width: toRem(1722.2);
 
 }
 
@@ -20,6 +22,10 @@
     flex-direction: column;
     // gap: toRem(62);
     height: fit-content;
+    // width: 75.0625rem;
+    // overflow-x: visible;
+    // overflow-y: hidden;
+
 }
 
 .top {
@@ -591,10 +597,23 @@
 .gamesmodeCont {
     width: 76.2rem;
     overflow: hidden;
-    overflow-y: visible;
+    // overflow-y: visible;
     // gap: 0;
     padding-left: toRem(50);
     padding-right: toRem(50);
     position: relative;
     left: toRem(4);
+}
+.prev-btn {
+    position: absolute;
+    top: -9.75rem;
+    left: toRem(-597);
+}
+.next-btn {
+    position: absolute;
+    top: -9.75rem;
+    left: toRem(545);
+}
+.owl-carousel .owl-nav button.owl-prev, .owl-carousel .owl-nav button.owl-next, .owl-carousel button.owl-dot {
+    position: absolute;
 }
