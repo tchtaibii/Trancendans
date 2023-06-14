@@ -6,6 +6,7 @@
     gap: 2rem;
     position: relative;
     top: toRem(-10);
+
     .fa-Profile {
         display: flex;
         flex-direction: column;
@@ -355,8 +356,8 @@ h1 {
 
 .profileDown {
     display: flex;
-    gap: toRem(44);
-    padding-left: 4.25rem;
+    gap: toRem(38);
+    //padding-left: 4.25rem;
     padding-right: 2.125rem;
     width: 100%;
     position: relative;

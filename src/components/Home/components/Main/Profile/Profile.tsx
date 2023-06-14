@@ -263,7 +263,7 @@ export function ProfileDown() {
             </div>
             <div className="HistoryProfile">
                 <h1>Games History</h1>
-                <GradienBox mywidth={'850px'} myheight={'388px'} myborder={'40px'}>
+                <GradienBox mywidth={'885px'} myheight={'388px'} myborder={'40px'}>
                     <div className="gameHistory">
                         <div className="headerHistory">
                             <div className="game-h wins">7 WINS</div>

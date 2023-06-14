@@ -21,7 +21,7 @@
             box-shadow: 0px toRem(4) toRem(40) rgba(0, 0, 0, 0.5);
             backdrop-filter: blur(toRem(2));
             border-radius: toRem(15);
-            padding: toRem(0.5);
+            padding: toRem(1);
 
             .backHome {
                 width: 100%;
@@ -96,7 +96,7 @@
                 width: toRem(162);
                 height: toRem(40);
                 background: linear-gradient(to bottom, #5699AE, #E15253);
-                padding: toRem(0.7);
+                padding: toRem(1);
 
                 .showlist {
                     width: 100%;
@@ -224,7 +224,7 @@
                 backdrop-filter: blur(toRem(2));
                 border-radius: toRem(25);
                 background: linear-gradient(to bottom, #5699AE, #E15253);
-                padding: toRem(0.7);
+                padding: toRem(1);
                 left: toRem(138);
                 top: toRem(140);
 
