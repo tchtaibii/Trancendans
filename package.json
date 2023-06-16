@@ -13,7 +13,6 @@
     "@reduxjs/toolkit": "^1.9.5",
     "@types/chart.js": "^2.9.37",
     "@types/owl.carousel": "^2.3.3",
-    "@types/swiper": "^6.0.0",
     "axios": "^1.4.0",
     "chart.js": "^4.3.0",
     "framer-motion": "^10.12.12",
